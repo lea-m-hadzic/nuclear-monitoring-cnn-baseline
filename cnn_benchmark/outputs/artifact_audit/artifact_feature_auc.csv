@@ -1,0 +1,9 @@
+feature,auc_saratov_vs_fordow,separation
+wm_contrast_Saratov_mask,1.0,1.0
+wm_contrast_Fordow_mask,0.008,0.983
+seam_col_Saratov_grid,0.946,0.892
+seam_col_Fordow_grid,0.069,0.861
+seam_row_Saratov_grid,0.707,0.414
+seam_row_Fordow_grid,0.037,0.927
+wm_contrast_Saratov_mask_after,0.549,0.098
+wm_contrast_Fordow_mask_after,0.541,0.082

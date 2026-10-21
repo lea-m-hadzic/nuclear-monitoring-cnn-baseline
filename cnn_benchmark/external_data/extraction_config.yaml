@@ -1,0 +1,89 @@
+# External layered-fence training imagery: extraction settings.
+#
+# Imagery is produced by Qiqi's unmodified script, pinned to a commit. Nothing here holds credentials:
+# the Google key is read only from the GOOGLE_MAPS_STATIC_API_KEY environment variable at run time.
+
+vendor:
+  repo_url: https://github.com/QiqiNerd/IMINT-Analysis-Longview.git
+  path: vendor/IMINT-Analysis-Longview          # relative to the repo root; git-ignored
+  commit: a5aec12f2805e14379eb62184a0ebc45440382a1
+  script: scripts/scan_tiles_overscan_crop.py
+
+output_root: external_imagery                   # relative to the repo root; git-ignored
+api_key_env: GOOGLE_MAPS_STATIC_API_KEY
+
+# Two presets. Which one reproduces "the benchmark" depends on the AOI (see README.md):
+#   Saratov manifests: legacy 2x2 mosaic at z16 (message "ok_mosaic2x2"): 1.90 km at 0.743 m/px (lat 51.5).
+#   Natanz/Fordow manifests: mode "auto_mosaic", z17, 3x3/4x4 grid, cropped to 1.9 km, resized to 2560 px.
+# Legacy z16 only gives a ~1.9 km footprint near 51.5 deg latitude; elsewhere the footprint is
+# 1.9 * cos(lat) / cos(51.52) km (e.g. ~2.5 km at 35 N). auto_mosaic gives 1.9 km / 0.742 m/px at any latitude.
+# There is deliberately NO default preset: the wrapper requires --preset.
+presets:
+  legacy_mosaic2x2_z16:          # Qiqi's stated command for the z16 benchmark imagery
+    flags: [--mosaic2x2, --mosaic_zoom, "16", --size, "640", --scale, "2", --tile_km, "1.9",
+            --mosaic_overlap_m, "0", --maptype, satellite, --skip_raw]
+  auto_mosaic_1p9km:             # what the Natanz/Fordow manifests record
+    flags: [--auto_mosaic, --output_px, "2560", --size, "640", --scale, "2", --tile_km, "1.9",
+            --mosaic_overlap_m, "0", --maptype, satellite, --skip_raw]
+
+tile_km: 1.9
+output_px: 2560
+single_image_px: 1280           # size=640 x scale=2, as recorded (raw_image_px / single_image_px) in all manifests
+
+# Google Maps Platform pricing for the Static Maps SKU (Essentials). Assumption only: re-check before any large
+# run at https://developers.google.com/maps/billing-and-pricing/pricing . Volume tiers are per billing account
+# per calendar month, and the free cap is shared with any other Static Maps use on that account.
+pricing:
+  checked_on: "2026-10-13"
+  source: https://developers.google.com/maps/billing-and-pricing/pricing
+  free_requests_per_month: 10000
+  tiers_usd_per_1000:            # [upper bound of monthly volume (inclusive), price per 1000 above the previous bound]
+    - [100000, 2.00]
+    - [500000, 1.60]
+    - [1000000, 1.20]
+    - [5000000, 0.60]
+    - [null, 0.15]
+
+# Evaluation AOIs: never a source of training imagery or negatives. Centres/radii as in the benchmark report folders
+# (<aoi>_<lat>_<lon>_<radius>km_report_light) and configs/default.yaml (40 km Saratov, 30 km Natanz/Fordow).
+evaluation_aois:
+  Saratov: {lat: 51.52, lon: 46.00, radius_km: 40}
+  Natanz:  {lat: 33.72, lon: 51.72, radius_km: 30}
+  Fordow:  {lat: 34.88, lon: 51.00, radius_km: 30}
+aoi_exclusion_buffer_km: 25          # no external tile centre within radius + buffer of an evaluation AOI
+
+# External dataset design (see README.md "External dataset")
+dataset:
+  seed: "external-v1"
+  dataset_dir: external_imagery/dataset           # coordinate-bearing CSVs + contact sheets (git-ignored)
+  split_group_link_km: 15        # single-linkage: rows closer than this form one split unit (> 2 x annulus outer + tile)
+  jitter:
+    min_m: 100                  # fence point never within 100 m (~135 px) of the tile centre
+    max_m: 350                  # ... and at most 350 m away (keeps >= 600 m to the tile edge)
+    min_edge_margin_m: 500      # verification threshold: fence point to nearest tile edge
+  negatives:
+    per_positive: 4             # candidates generated and extracted (one reserve per positive)
+    primary_per_positive: 3     # neg1..neg3 = primary 3:1 review/training subset; neg4 = reserve
+    annulus_inner_km: 3.0       # candidate centre distance from its own fence point
+    annulus_outer_km: 6.0
+    exclusion_km: 3.0           # from EVERY positive fence point in the list (any facility)
+    min_center_sep_km: 2.0      # axis-aligned (Chebyshev) separation from every other tile: no footprint overlap
+    max_attempts: 200
+  split:
+    val_fraction: 0.2
+
+# Hard (industrial) negatives: STRATEGY ONLY until approved. No coordinates are downloaded or extracted.
+hard_negatives:
+  pilot_facilities: 80
+  tiles_per_facility: 1             # one tile, same 100-350 m jitter rule as positives (applied to the facility point)
+  min_km_from_any_positive: 20      # > split_group_link_km (15): hard negatives never join a positive's split group
+  min_km_between_hard_negatives: 2  # no footprint overlap; closer sites are linked into one split group anyway
+  categories:                       # target facility counts (sum = pilot_facilities); see README / audit report
+    thermal_power_plant:  {n: 25, source: "WRI Global Power Plant Database v1.3 (CC BY 4.0); primary_fuel Coal/Gas/Oil, capacity_mw >= 500"}
+    refinery_petrochemical: {n: 15, source: "OpenStreetMap (ODbL) via Overpass: industrial=refinery, or man_made=works + product~oil|petro"}
+    hv_substation:        {n: 15, source: "OpenStreetMap: power=substation, voltage >= 345000, area >= 5 ha"}
+    rail_yard_port:       {n: 10, source: "OpenStreetMap: landuse=railway + railway/service=yard (area >= 20 ha), or landuse=port"}
+    logistics_warehouse:  {n: 10, source: "OpenStreetMap: building=warehouse clusters / landuse=industrial + warehouse, area >= 10 ha"}
+    water_treatment:      {n: 5,  source: "OpenStreetMap: man_made=wastewater_plant | water_works, area >= 5 ha"}
+  exclude_tags_within_km: 2         # drop a candidate if any of these is within this distance (target-like fencing)
+  exclude_tags: ["landuse=military", "military=*", "amenity=prison", "power=plant + plant:source=nuclear", "name~nuclear|atom|NPP"]

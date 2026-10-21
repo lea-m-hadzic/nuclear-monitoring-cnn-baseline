@@ -1,0 +1,172 @@
+{
+ "template_sha256": "4a358002977156e09e9d21beddc9d6f4d0569bf9f3c74df350860897bbfde24f",
+ "geometry_table_sha256": "988788dabed1a93c3f54d7a791683a05fae1fbb578fdebe3fd9e9c4de8fd0043",
+ "placeholder_ground_truth": {
+  "n_tiles": 70,
+  "coverage_all": 0.9925,
+  "min_tile_coverage": 0.8568,
+  "uncovered_px_total": 6765,
+  "by_layout": [
+   {
+    "layout": "z15/3x3",
+    "known_px": 12381,
+    "covered_px": 12381,
+    "mask_px_in_blank_images": 42048,
+    "mask_px_on_overlay": 12381,
+    "coverage": 1.0,
+    "share_of_mask_on_overlay": 0.294
+   },
+   {
+    "layout": "z16/3x3",
+    "known_px": 155950,
+    "covered_px": 152710,
+    "mask_px_in_blank_images": 370495,
+    "mask_px_on_overlay": 152710,
+    "coverage": 0.9792,
+    "share_of_mask_on_overlay": 0.412
+   },
+   {
+    "layout": "z17/3x3",
+    "known_px": 211795,
+    "covered_px": 210170,
+    "mask_px_in_blank_images": 591619,
+    "mask_px_on_overlay": 210170,
+    "coverage": 0.9923,
+    "share_of_mask_on_overlay": 0.355
+   },
+   {
+    "layout": "z17/4x4",
+    "known_px": 524543,
+    "covered_px": 522643,
+    "mask_px_in_blank_images": 1458214,
+    "mask_px_on_overlay": 522643,
+    "coverage": 0.9964,
+    "share_of_mask_on_overlay": 0.358
+   }
+  ]
+ },
+ "real_imagery": {
+  "external z16/3x3": {
+   "n_tiles": 139,
+   "known_watermark_bins": 1370,
+   "coverage_of_known": 0.9942,
+   "known_bins_outside_template": 8,
+   "before_max_freq_in_template": 0.998,
+   "after_max_freq_in_template": 0.091,
+   "after_max_freq_outside_template": 0.349,
+   "after_bins_gt_0p5": 0,
+   "background_median_freq": 0.284,
+   "attribution_left_edge_est": {
+    "p1": 438.0,
+    "p5": 620.0,
+    "median": 980.0
+   }
+  },
+  "external z17/3x3": {
+   "n_tiles": 169,
+   "known_watermark_bins": 1382,
+   "coverage_of_known": 0.9993,
+   "known_bins_outside_template": 1,
+   "before_max_freq_in_template": 1.0,
+   "after_max_freq_in_template": 0.051,
+   "after_max_freq_outside_template": 0.302,
+   "after_bins_gt_0p5": 0,
+   "background_median_freq": 0.251,
+   "attribution_left_edge_est": {
+    "p1": 510.8,
+    "p5": 600.0,
+    "median": 840.0
+   }
+  },
+  "external z17/4x4": {
+   "n_tiles": 360,
+   "known_watermark_bins": 1379,
+   "coverage_of_known": 1.0,
+   "known_bins_outside_template": 0,
+   "before_max_freq_in_template": 0.998,
+   "after_max_freq_in_template": 0.03,
+   "after_max_freq_outside_template": 0.286,
+   "after_bins_gt_0p5": 0,
+   "background_median_freq": 0.246,
+   "attribution_left_edge_est": {
+    "p1": 440.0,
+    "p5": 600.0,
+    "median": 840.0
+   }
+  },
+  "Saratov": {
+   "n_tiles": 120,
+   "known_watermark_bins": 1303,
+   "coverage_of_known": 1.0,
+   "known_bins_outside_template": 0,
+   "before_max_freq_in_template": 1.0,
+   "after_max_freq_in_template": 0.362,
+   "after_max_freq_outside_template": 0.237,
+   "after_bins_gt_0p5": 0,
+   "background_median_freq": 0.18,
+   "attribution_left_edge_est": {
+    "p1": 625.4,
+    "p5": 680.0,
+    "median": 900.0
+   }
+  },
+  "Natanz": {
+   "n_tiles": 120,
+   "known_watermark_bins": 1759,
+   "coverage_of_known": 0.8727,
+   "known_bins_outside_template": 224,
+   "before_max_freq_in_template": 0.999,
+   "after_max_freq_in_template": 0.036,
+   "after_max_freq_outside_template": 0.23,
+   "after_bins_gt_0p5": 0,
+   "background_median_freq": 0.175,
+   "attribution_left_edge_est": {
+    "p1": 580.0,
+    "p5": 660.0,
+    "median": 700.0
+   }
+  },
+  "Fordow": {
+   "n_tiles": 120,
+   "known_watermark_bins": 1810,
+   "coverage_of_known": 0.8453,
+   "known_bins_outside_template": 280,
+   "before_max_freq_in_template": 1.0,
+   "after_max_freq_in_template": 0.022,
+   "after_max_freq_outside_template": 0.225,
+   "after_bins_gt_0p5": 0,
+   "background_median_freq": 0.167,
+   "attribution_left_edge_est": {
+    "p1": 587.0,
+    "p5": 660.0,
+    "median": 700.0
+   }
+  }
+ },
+ "over_masking": {
+  "template_area_pct_of_source_image": 2.424,
+  "estimated_actual_overlay_area_pct_median_text": 1.303,
+  "excess_area_pct_of_tile_median_text": 1.121,
+  "attribution_left_edge_median_real": 840.0,
+  "attribution_left_edge_min_placeholder": 309,
+  "per_tile_mask_area_pct": {
+   "external": [
+    1.896,
+    2.84
+   ],
+   "Saratov": [
+    2.567,
+    2.567
+   ],
+   "Natanz": [
+    2.436,
+    2.709
+   ],
+   "Fordow": [
+    2.777,
+    2.84
+   ]
+  },
+  "old_fixed_mask_area_pct": 5.82
+ }
+}

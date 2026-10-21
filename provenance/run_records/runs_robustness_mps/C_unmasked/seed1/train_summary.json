@@ -1,0 +1,8 @@
+{
+ "best_epoch": 3,
+ "best_shared_val_pr_auc": 0.962188905896404,
+ "best_shared_val_auroc": 0.9567972350230415,
+ "best_shared_val_loss": 0.2454830635402162,
+ "epochs_run": 9,
+ "run_label": "ablation"
+}

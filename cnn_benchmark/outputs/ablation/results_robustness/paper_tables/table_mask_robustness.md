@@ -1,0 +1,8 @@
+**Robustness to imagery masking (all Apple MPS).** Mask on = frozen main-ablation runs; mask off = identical recipe with the geometric watermark mask disabled. Mean ± SD over 3 seeds; differences are within seed variability and do not change the A-vs-C interpretation.
+
+| Condition | Backend | Seeds | Pooled tile AUROC | Pooled tile PR-AUC | Saratov recall @20% area | Area to 50% Saratov recall (% AOI) | Natanz first-hit area (% AOI) | Fordow first-hit area (% AOI) |
+|---|---|---|---|---|---|---|---|---|
+| A [MPS, mask on, frozen] | MPS | 3 | 0.763 ± 0.057 | 0.225 ± 0.126 | 0.32 ± 0.26 | 33.6 ± 21.2 | 0.15 ± 0.04 | 2.09 ± 1.31 |
+| A [MPS, mask off] | MPS | 3 | 0.762 ± 0.065 | 0.234 ± 0.103 | 0.43 ± 0.20 | 22.5 ± 13.4 | 0.13 ± 0.00 | 3.49 ± 4.27 |
+| C [MPS, mask on, frozen] | MPS | 3 | 0.745 ± 0.047 | 0.237 ± 0.034 | 0.54 ± 0.04 | 18.5 ± 1.3 | 1.75 ± 2.80 | 2.77 ± 3.15 |
+| C [MPS, mask off] | MPS | 3 | 0.715 ± 0.032 | 0.221 ± 0.066 | 0.49 ± 0.10 | 16.7 ± 6.3 | 0.47 ± 0.59 | 3.66 ± 3.87 |

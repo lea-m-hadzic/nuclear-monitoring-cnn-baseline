@@ -1,0 +1,27 @@
+region,facility,A,B,C
+Saratov,SAR-SILO-02 (icbm_silo),40.598 ± 23.916,15.081 ± 9.026,20.706 ± 19.385
+Saratov,SAR-SILO-03 (icbm_silo),24.512 ± 19.838,63.817 ± 22.282,7.109 ± 1.631
+Saratov,SAR-SILO-04 (icbm_silo),52.614 ± 40.077,79.688 ± 6.849,37.127 ± 20.290
+Saratov,SAR-SILO-05 (icbm_silo),68.174 ± 7.256,50.029 ± 17.632,51.537 ± 24.153
+Saratov,SAR-SILO-06 (icbm_silo),34.757 ± 18.167,34.853 ± 26.672,52.950 ± 37.318
+Saratov,SAR-SILO-07 (icbm_silo),49.670 ± 38.756,54.003 ± 28.310,36.816 ± 14.679
+Saratov,SAR-SILO-08 (icbm_silo),67.216 ± 25.240,38.970 ± 16.658,10.844 ± 7.274
+Saratov,SAR-SILO-09 (icbm_silo),64.128 ± 6.245,46.654 ± 31.309,63.410 ± 32.816
+Saratov,SAR-SILO-10 (icbm_silo),62.716 ± 15.248,24.656 ± 12.592,49.718 ± 13.312
+Saratov,SAR-SILO-11 (icbm_silo),58.790 ± 22.976,29.275 ± 6.426,29.970 ± 17.081
+Saratov,SAR-SILO-12 (icbm_silo),82.943 ± 11.074,36.935 ± 14.924,58.838 ± 22.496
+Saratov,SAR-SILO-13 (icbm_silo),12.136 ± 6.593,56.899 ± 19.549,2.035 ± 2.321
+Saratov,SAR-SILO-14 (icbm_silo),35.882 ± 28.585,27.456 ± 13.933,7.038 ± 4.107
+Saratov,SAR-SILO-15 (icbm_silo),54.362 ± 27.596,52.854 ± 9.480,71.262 ± 17.777
+Saratov,SAR-SILO-16 (icbm_silo),20.873 ± 15.947,48.066 ± 20.403,9.240 ± 6.323
+Saratov,SAR-SILO-17 (icbm_silo),21.496 ± 15.820,51.178 ± 5.760,28.486 ± 15.907
+Saratov,SAR-SILO-18 (icbm_silo),53.787 ± 41.239,56.444 ± 12.231,11.083 ± 8.320
+Saratov,SAR-SILO-19 (icbm_silo),54.865 ± 40.233,43.207 ± 10.390,29.802 ± 17.165
+Saratov,SAR-SILO-20 (icbm_silo),33.105 ± 12.972,19.150 ± 9.227,17.307 ± 1.370
+Saratov,SAR-SILO-21 (icbm_silo),65.469 ± 3.088,45.457 ± 17.166,34.733 ± 19.860
+Saratov,SAR-WHS-01 (warhead_storage),10.197 ± 11.401,12.926 ± 6.300,3.351 ± 4.812
+Saratov,SAR-WHS-02 (warhead_storage),16.780 ± 14.591,18.934 ± 6.700,3.447 ± 4.317
+Saratov,SAR-WHS-03 (warhead_storage),28.198 ± 28.655,28.581 ± 21.871,4.069 ± 4.170
+Saratov,SAR-XFER-01 (warhead_rail_to_road_transfer),6.176 ± 2.709,91.824 ± 1.517,60.633 ± 36.466
+Natanz,NAT-ENR-01 (enrichment_plant),0.149 ± 0.037,42.523 ± 26.962,1.745 ± 2.802
+Fordow,FOR-ENR-01 (enrichment_plant),2.086 ± 1.311,16.473 ± 3.846,2.767 ± 3.152

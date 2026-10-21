@@ -1,0 +1,207 @@
+{
+ "regions": {
+  "Saratov": {
+   "n_tiles": 1387,
+   "n_human_positive": 102,
+   "tile_auroc": 0.6791790646219578,
+   "tile_pr_auc": 0.344653095131653,
+   "facility": {
+    "n_units": 1387,
+    "total_unit_area_km2": 5007.070000000001,
+    "aoi_area_km2": 5027.0,
+    "n_facilities": 24,
+    "tie_policy": "group",
+    "median_first_hit_rank_expected": 326.5,
+    "mean_first_hit_rank_expected": 451.2916666666667,
+    "recall_targets": [
+     {
+      "recall_target": 0.5,
+      "reached": true,
+      "n_reviewed": 239,
+      "area_reviewed_km2": 862.7900000000027,
+      "pct_aoi_reviewed": 17.163119156554657,
+      "workload_reduction": 0.8283688084344534,
+      "score_threshold": 0.32476529479026794
+     },
+     {
+      "recall_target": 0.75,
+      "reached": true,
+      "n_reviewed": 691,
+      "area_reviewed_km2": 2494.5099999999907,
+      "pct_aoi_reviewed": 49.62223990451543,
+      "workload_reduction": 0.5037776009548457,
+      "score_threshold": 0.1302604079246521
+     },
+     {
+      "recall_target": 0.9,
+      "reached": true,
+      "n_reviewed": 1142,
+      "area_reviewed_km2": 4122.6200000000445,
+      "pct_aoi_reviewed": 82.00954843843334,
+      "workload_reduction": 0.17990451561566656,
+      "score_threshold": 0.028659896925091743
+     },
+     {
+      "recall_target": 1.0,
+      "reached": true,
+      "n_reviewed": 1307,
+      "area_reviewed_km2": 4718.26999999999,
+      "pct_aoi_reviewed": 93.85856375571893,
+      "workload_reduction": 0.06141436244281073,
+      "score_threshold": 0.005247603636234999
+     }
+    ]
+   },
+   "score_quantiles": {
+    "human_positive": [
+     0.0111,
+     0.346,
+     0.8972
+    ],
+    "human_negative": [
+     0.0134,
+     0.1246,
+     0.3773
+    ]
+   }
+  },
+  "Natanz": {
+   "n_tiles": 776,
+   "n_human_positive": 8,
+   "tile_auroc": 0.5989583333333334,
+   "tile_pr_auc": 0.18576336191023118,
+   "facility": {
+    "n_units": 776,
+    "total_unit_area_km2": 2801.3599999999997,
+    "aoi_area_km2": 2827.0,
+    "n_facilities": 1,
+    "tie_policy": "group",
+    "median_first_hit_rank_expected": 1.0,
+    "mean_first_hit_rank_expected": 1.0,
+    "recall_targets": [
+     {
+      "recall_target": 0.5,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.9897184371948242
+     },
+     {
+      "recall_target": 0.75,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.9897184371948242
+     },
+     {
+      "recall_target": 0.9,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.9897184371948242
+     },
+     {
+      "recall_target": 1.0,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.9897184371948242
+     }
+    ]
+   },
+   "score_quantiles": {
+    "human_positive": [
+     0.024,
+     0.1667,
+     0.8255
+    ],
+    "human_negative": [
+     0.0045,
+     0.1097,
+     0.4287
+    ]
+   }
+  },
+  "Fordow": {
+   "n_tiles": 777,
+   "n_human_positive": 36,
+   "tile_auroc": 0.7535612535612536,
+   "tile_pr_auc": 0.14783351453415683,
+   "facility": {
+    "n_units": 777,
+    "total_unit_area_km2": 2804.9700000000003,
+    "aoi_area_km2": 2827.0,
+    "n_facilities": 1,
+    "tie_policy": "group",
+    "median_first_hit_rank_expected": 1.0,
+    "mean_first_hit_rank_expected": 1.0,
+    "recall_targets": [
+     {
+      "recall_target": 0.5,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.8658055067062378
+     },
+     {
+      "recall_target": 0.75,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.8658055067062378
+     },
+     {
+      "recall_target": 0.9,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.8658055067062378
+     },
+     {
+      "recall_target": 1.0,
+      "reached": true,
+      "n_reviewed": 1,
+      "area_reviewed_km2": 3.61,
+      "pct_aoi_reviewed": 0.1276972055182172,
+      "workload_reduction": 0.9987230279448178,
+      "score_threshold": 0.8658055067062378
+     }
+    ]
+   },
+   "score_quantiles": {
+    "human_positive": [
+     0.1118,
+     0.3435,
+     0.6002
+    ],
+    "human_negative": [
+     0.0054,
+     0.1218,
+     0.4415
+    ]
+   }
+  }
+ },
+ "tile_label": "human_target",
+ "facility_map": "PROVISIONAL (see facility_mapping_questions.md)",
+ "aggregate": {
+  "pooled_tile_auroc": 0.6979265745580059,
+  "pooled_tile_pr_auc": 0.2642049089315012,
+  "mean_tile_auroc": 0.6772328838388483,
+  "mean_tile_pr_auc": 0.22608332385868032
+ }
+}

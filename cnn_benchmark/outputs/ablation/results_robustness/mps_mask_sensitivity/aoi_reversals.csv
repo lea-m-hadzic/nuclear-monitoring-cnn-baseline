@@ -1,0 +1,7 @@
+metric,region,aoi_order,pooled_order,aoi_spread,mean_seed_std
+tile_auroc,Natanz,"A [MPS, mask on] > A [MPS, mask off] > C [MPS, mask off] > C [MPS, mask on]","A [MPS, mask on] > A [MPS, mask off] > C [MPS, mask on] > C [MPS, mask off]",0.252,0.078
+tile_auroc,Fordow,"C [MPS, mask on] > C [MPS, mask off] > A [MPS, mask off] > A [MPS, mask on]","A [MPS, mask on] > A [MPS, mask off] > C [MPS, mask on] > C [MPS, mask off]",0.051,0.055
+tile_pr_auc,Saratov,"C [MPS, mask on] > A [MPS, mask on] > C [MPS, mask off] > A [MPS, mask off]","C [MPS, mask on] > A [MPS, mask off] > A [MPS, mask on] > C [MPS, mask off]",0.038,0.103
+tile_pr_auc,Natanz,"A [MPS, mask off] > A [MPS, mask on] > C [MPS, mask off] > C [MPS, mask on]","C [MPS, mask on] > A [MPS, mask off] > A [MPS, mask on] > C [MPS, mask off]",0.174,0.175
+tile_pr_auc,Fordow,"A [MPS, mask off] > C [MPS, mask on] > C [MPS, mask off] > A [MPS, mask on]","C [MPS, mask on] > A [MPS, mask off] > A [MPS, mask on] > C [MPS, mask off]",0.024,0.032
+facility_recall@5%,Fordow,"A [MPS, mask on] > A [MPS, mask off] > C [MPS, mask off] > C [MPS, mask on]","C [MPS, mask off] > C [MPS, mask on] > A [MPS, mask off] > A [MPS, mask on]",0.333,0.433

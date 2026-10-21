@@ -1,0 +1,10 @@
+pair,feature,separation_before,separation_after
+Saratov vs Fordow,wm_contrast_Saratov_mask,1.0,0.098
+Saratov vs Fordow,wm_contrast_Fordow_mask,0.983,0.082
+Saratov vs Fordow,wm_contrast_Natanz_mask,0.99,0.077
+Saratov vs Natanz,wm_contrast_Saratov_mask,1.0,0.228
+Saratov vs Natanz,wm_contrast_Fordow_mask,0.999,0.198
+Saratov vs Natanz,wm_contrast_Natanz_mask,1.0,0.199
+Fordow vs Natanz,wm_contrast_Saratov_mask,0.537,0.134
+Fordow vs Natanz,wm_contrast_Fordow_mask,0.999,0.125
+Fordow vs Natanz,wm_contrast_Natanz_mask,1.0,0.131

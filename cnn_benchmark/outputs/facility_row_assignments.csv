@@ -1,0 +1,123 @@
+unit_id,region,zoom,record_id,row_tile_id,parent_tile_id,stage,included_final,score,human_label,facility_type,facility_id
+Fordow|z16|473,Fordow,16,473,r14_c15,r14_c15,Original output,1,5,TP - Fordow,enrichment_plant,FOR-ENR-01
+Fordow|z16|517,Fordow,16,517,"r15_c15, NW",r15_c15,Quadrant output,1,3,FN - Fordow,enrichment_plant,FOR-ENR-01
+Fordow|z16|565,Fordow,16,565,"r16_c16, NW",r16_c16,Quadrant output,1,6,TP - Fordow,enrichment_plant,FOR-ENR-01
+Fordow|z16|566,Fordow,16,566,"r16_c16, NE",r16_c16,Quadrant output,1,-3,FN - Fordow,enrichment_plant,FOR-ENR-01
+Fordow|z16|568,Fordow,16,568,"r16_c16, SE",r16_c16,Quadrant output,1,-5,FN - Fordow,enrichment_plant,FOR-ENR-01
+Natanz|z16|574,Natanz,16,574,r15_c16,r15_c16,Original output,1,5,TP - Natanz,enrichment_plant,NAT-ENR-01
+Natanz|z16|578,Natanz,16,578,"r15_c17, SW",r15_c17,Quadrant output,1,3,FN - Natanz,enrichment_plant,NAT-ENR-01
+Natanz|z16|625,Natanz,16,625,r16_c16,r16_c16,Original output,1,7,TP - Natanz,enrichment_plant,NAT-ENR-01
+Saratov|z16|682,Saratov,16,682,r17_c13,r17_c13,Original output,1,-5,FN - radioactive waste,radioactive_waste_repository,SAR-RWR-01
+Saratov|z16|5,Saratov,16,5,r2_c17,r2_c17,Original output,1,-7,FN - silo,icbm_silo,SAR-SILO-01
+Saratov|z16|26,Saratov,16,26,"r3_c20, NE",r3_c20,Quadrant output,1,3,FN - silo,icbm_silo,SAR-SILO-02
+Saratov|z16|35,Saratov,16,35,r3_c27,r3_c27,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-03
+Saratov|z16|65,Saratov,16,65,r5_c10,r5_c10,Original output,1,-7,FN - silo under renovation,icbm_silo,SAR-SILO-04
+Saratov|z16|94,Saratov,16,94,r5_c31,r5_c31,Original output,1,-7,FN - silo,icbm_silo,SAR-SILO-05
+Saratov|z16|103,Saratov,16,103,"r6_c13, NW",r6_c13,Quadrant output,1,-2,FN - silo under renovation,icbm_silo,SAR-SILO-06
+Saratov|z16|114,Saratov,16,114,r6_c21,r6_c21,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-07
+Saratov|z16|117,Saratov,16,117,r6_c24,r6_c24,Original output,1,5,TP - silo,icbm_silo,SAR-SILO-08
+Saratov|z16|169,Saratov,16,169,r8_c10,r8_c10,Original output,1,-7,FN - silo,icbm_silo,SAR-SILO-09
+Saratov|z16|182,Saratov,16,182,r8_c19,r8_c19,Original output,1,-8,FN - silo,icbm_silo,SAR-SILO-10
+Saratov|z16|190,Saratov,16,190,r8_c27,r8_c27,Original output,1,-8,FN - silo,icbm_silo,SAR-SILO-11
+Saratov|z16|191,Saratov,16,191,r8_c28,r8_c28,Original output,1,-8,FN - silo,icbm_silo,SAR-SILO-11
+Saratov|z16|204,Saratov,16,204,"r9_c7, NE",r9_c7,Quadrant output,1,2,FN - silo,icbm_silo,SAR-SILO-12
+Saratov|z16|222,Saratov,16,222,r9_c23,r9_c23,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-13
+Saratov|z16|381,Saratov,16,381,r13_c3,r13_c3,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-14
+Saratov|z16|521,Saratov,16,521,"r15_c7, NE",r15_c7,Quadrant output,1,5,TP - silo,icbm_silo,SAR-SILO-15
+Saratov|z16|665,Saratov,16,665,r17_c4,r17_c4,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-16
+Saratov|z16|672,Saratov,16,672,"r17_c7, SE",r17_c7,Quadrant output,1,6,TP - silo,icbm_silo,SAR-SILO-17
+Saratov|z16|867,Saratov,16,867,r20_c3,r20_c3,Original output,1,5,TP - silo,icbm_silo,SAR-SILO-18
+Saratov|z16|939,Saratov,16,939,"r21_c7, NE",r21_c7,Quadrant output,1,7,TP - silo,icbm_silo,SAR-SILO-19
+Saratov|z16|1058,Saratov,16,1058,r23_c2,r23_c2,Original output,1,-8,FN - silo,icbm_silo,SAR-SILO-20
+Saratov|z16|1059,Saratov,16,1059,r23_c3,r23_c3,Original output,1,-8,FN - silo,icbm_silo,SAR-SILO-20
+Saratov|z16|1062,Saratov,16,1062,r23_c6,r23_c6,Original output,1,-8,FN - silo,icbm_silo,SAR-SILO-21
+Saratov|z16|281,Saratov,16,281,"r11_c5, SE",r11_c5,Quadrant output,1,5,TP - warhead storage,warhead_storage,SAR-WHS-01
+Saratov|z16|1356,Saratov,16,1356,r27_c31,r27_c31,Original output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-02
+Saratov|z16|1357,Saratov,16,1357,r27_c32,r27_c32,Original output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-02
+Saratov|z16|1413,Saratov,16,1413,r28_c31,r28_c31,Original output,1,5,TP - warhead storage,warhead_storage,SAR-WHS-02
+Saratov|z16|1414,Saratov,16,1414,r28_c32,r28_c32,Original output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-02
+Saratov|z16|1908,Saratov,16,1908,"r41_c22, NE",r41_c22,Quadrant output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1910,Saratov,16,1910,"r41_c22, SE",r41_c22,Quadrant output,1,7,TP - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1911,Saratov,16,1911,r41_c23,r41_c23,Original output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1930,Saratov,16,1930,r42_c22,r42_c22,Original output,1,7,TP - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1932,Saratov,16,1932,"r42_c23, NW",r42_c23,Quadrant output,1,-5,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1933,Saratov,16,1933,"r42_c23, NE",r42_c23,Quadrant output,1,-7,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1934,Saratov,16,1934,"r42_c23, SW",r42_c23,Quadrant output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1935,Saratov,16,1935,"r42_c23, SE",r42_c23,Quadrant output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z16|1446,Saratov,16,1446,r29_c24,r29_c24,Original output,1,-5,FN - rail-to-road warhead transfer point,warhead_rail_to_road_transfer,SAR-XFER-01
+Saratov|z17|2436,Saratov,17,2436,"r33_c24, NE",r33_c24,Quadrant output,1,6,TP - nuclear waste repository,radioactive_waste_repository,SAR-RWR-01
+Saratov|z17|2438,Saratov,17,2438,"r33_c24, SE",r33_c24,Quadrant output,1,5,TP - nuclear waste repository,radioactive_waste_repository,SAR-RWR-01
+Saratov|z17|2439,Saratov,17,2439,r33_c25,r33_c25,Original output,1,-7,FN - nuclear waste repository - cut off,radioactive_waste_repository,SAR-RWR-01
+Saratov|z17|69,Saratov,17,69,"r4_c39, SE",r4_c39,Quadrant output,1,2,FN - silo - cut off,icbm_silo,SAR-SILO-02
+Saratov|z17|70,Saratov,17,70,r4_c40,r4_c40,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-02
+Saratov|z17|103,Saratov,17,103,r5_c39,r5_c39,Original output,1,5,TP - silo,icbm_silo,SAR-SILO-02
+Saratov|z17|104,Saratov,17,104,r5_c40,r5_c40,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-02
+Saratov|z17|116,Saratov,17,116,r5_c52,r5_c52,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-03
+Saratov|z17|117,Saratov,17,117,r5_c53,r5_c53,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-03
+Saratov|z17|330,Saratov,17,330,"r10_c18, NW",r10_c18,Quadrant output,1,2,FN - silo - cut off,icbm_silo,SAR-SILO-04
+Saratov|z17|321,Saratov,17,321,r9_c61,r9_c61,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-05
+Saratov|z17|343,Saratov,17,343,"r10_c25, SW",r10_c25,Quadrant output,1,5,TP - silo,icbm_silo,SAR-SILO-06
+Saratov|z17|368,Saratov,17,368,r10_c41,r10_c41,Original output,1,8,TP - silo,icbm_silo,SAR-SILO-07
+Saratov|z17|369,Saratov,17,369,r10_c42,r10_c42,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-07
+Saratov|z17|432,Saratov,17,432,r11_c47,r11_c47,Original output,1,6,TP - silo,icbm_silo,SAR-SILO-08
+Saratov|z17|433,Saratov,17,433,r11_c48,r11_c48,Original output,1,6,TP - silo,icbm_silo,SAR-SILO-08
+Saratov|z17|734,Saratov,17,734,"r16_c20, NW",r16_c20,Quadrant output,1,5,TP - silo,icbm_silo,SAR-SILO-09
+Saratov|z17|682,Saratov,17,682,r15_c37,r15_c37,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-10
+Saratov|z17|683,Saratov,17,683,r15_c38,r15_c38,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-10
+Saratov|z17|754,Saratov,17,754,r16_c37,r16_c37,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-10
+Saratov|z17|755,Saratov,17,755,r16_c38,r16_c38,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-10
+Saratov|z17|625,Saratov,17,625,r14_c54,r14_c54,Original output,1,-5,FN - silo,icbm_silo,SAR-SILO-11
+Saratov|z17|703,Saratov,17,703,r15_c54,r15_c54,Original output,1,-8,FN - silo,icbm_silo,SAR-SILO-11
+Saratov|z17|804,Saratov,17,804,r17_c13,r17_c13,Original output,1,-7,FN - silo,icbm_silo,SAR-SILO-12
+Saratov|z17|805,Saratov,17,805,r17_c14,r17_c14,Original output,1,-6,FN - silo - cut off,icbm_silo,SAR-SILO-12
+Saratov|z17|769,Saratov,17,769,"r16_c44, SE",r16_c44,Quadrant output,1,7,TP - silo,icbm_silo,SAR-SILO-13
+Saratov|z17|835,Saratov,17,835,r17_c44,r17_c44,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-13
+Saratov|z17|1471,Saratov,17,1471,r25_c5,r25_c5,Original output,1,-7,FN - silo - cut off,icbm_silo,SAR-SILO-14
+Saratov|z17|1472,Saratov,17,1472,r25_c6,r25_c6,Original output,1,5,TP - silo,icbm_silo,SAR-SILO-14
+Saratov|z17|1836,Saratov,17,1836,"r28_c14, SE",r28_c14,Quadrant output,1,-5,FN - silo,icbm_silo,SAR-SILO-15
+Saratov|z17|1949,Saratov,17,1949,"r29_c14, NE",r29_c14,Quadrant output,1,2,FN - silo - cut off,icbm_silo,SAR-SILO-15
+Saratov|z17|2275,Saratov,17,2275,r32_c6,r32_c6,Original output,1,-7,FN - silo - cut off,icbm_silo,SAR-SILO-16
+Saratov|z17|2279,Saratov,17,2279,"r32_c7, SW",r32_c7,Quadrant output,1,5,TP - silo,icbm_silo,SAR-SILO-16
+Saratov|z17|2408,Saratov,17,2408,r33_c6,r33_c6,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-16
+Saratov|z17|2409,Saratov,17,2409,r33_c7,r33_c7,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-16
+Saratov|z17|2553,Saratov,17,2553,r34_c13,r34_c13,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-17
+Saratov|z17|3077,Saratov,17,3077,r39_c6,r39_c6,Original output,1,7,TP - silo,icbm_silo,SAR-SILO-18
+Saratov|z17|3215,Saratov,17,3215,r40_c13,r40_c13,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-19
+Saratov|z17|3329,Saratov,17,3329,"r41_c13, NE",r41_c13,Quadrant output,1,5,TP - silo,icbm_silo,SAR-SILO-19
+Saratov|z17|3333,Saratov,17,3333,"r41_c14, NW",r41_c14,Quadrant output,1,-3,FN - silo - cut off,icbm_silo,SAR-SILO-19
+Saratov|z17|3880,Saratov,17,3880,r46_c4,r46_c4,Original output,1,5,TP - silo,icbm_silo,SAR-SILO-20
+Saratov|z17|3887,Saratov,17,3887,r46_c11,r46_c11,Original output,1,-5,FN - silo - cut off,icbm_silo,SAR-SILO-21
+Saratov|z17|3888,Saratov,17,3888,r46_c12,r46_c12,Original output,1,-8,FN - silo - cut off,icbm_silo,SAR-SILO-21
+Saratov|z17|1124,Saratov,17,1124,r21_c9,r21_c9,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-01
+Saratov|z17|1206,Saratov,17,1206,"r22_c9, NE",r22_c9,Quadrant output,1,7,TP - warhead storage,warhead_storage,SAR-WHS-01
+Saratov|z17|1208,Saratov,17,1208,"r22_c9, SE",r22_c9,Quadrant output,1,6,TP - warhead storage,warhead_storage,SAR-WHS-01
+Saratov|z17|1209,Saratov,17,1209,r22_c10,r22_c10,Original output,1,6,TP - warhead storage,warhead_storage,SAR-WHS-01
+Saratov|z17|1293,Saratov,17,1293,r23_c9,r23_c9,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-01
+Saratov|z17|1295,Saratov,17,1295,"r23_c10, NW",r23_c10,Quadrant output,1,7,TP - warhead storage,warhead_storage,SAR-WHS-01
+Saratov|z17|1296,Saratov,17,1296,"r23_c10, NE",r23_c10,Quadrant output,1,7,TP - warhead storage,warhead_storage,SAR-WHS-01
+Saratov|z17|4838,Saratov,17,4838,r54_c61,r54_c61,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-02
+Saratov|z17|4840,Saratov,17,4840,"r54_c62, NW",r54_c62,Quadrant output,1,-7,FN - warhead storage - cut off,warhead_storage,SAR-WHS-02
+Saratov|z17|4841,Saratov,17,4841,"r54_c62, NE",r54_c62,Quadrant output,1,5,TP - warhead storage,warhead_storage,SAR-WHS-02
+Saratov|z17|4842,Saratov,17,4842,"r54_c62, SW",r54_c62,Quadrant output,1,7,TP - warhead storage,warhead_storage,SAR-WHS-02
+Saratov|z17|4843,Saratov,17,4843,"r54_c62, SE",r54_c62,Quadrant output,1,5,TP - warhead storage,warhead_storage,SAR-WHS-02
+Saratov|z17|4844,Saratov,17,4844,r54_c63,r54_c63,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-02
+Saratov|z17|4939,Saratov,17,4939,r55_c61,r55_c61,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-02
+Saratov|z17|4940,Saratov,17,4940,r55_c62,r55_c62,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-02
+Saratov|z17|6848,Saratov,17,6848,"r81_c44, NW",r81_c44,Quadrant output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6850,Saratov,17,6850,"r81_c44, SW",r81_c44,Quadrant output,1,7,TP - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z17|6852,Saratov,17,6852,r81_c45,r81_c45,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6853,Saratov,17,6853,r81_c46,r81_c46,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6892,Saratov,17,6892,"r82_c43, NW",r82_c43,Quadrant output,1,3,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6894,Saratov,17,6894,"r82_c43, SW",r82_c43,Quadrant output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6896,Saratov,17,6896,r82_c44,r82_c44,Original output,1,-6,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z17|6898,Saratov,17,6898,"r82_c45, NW",r82_c45,Quadrant output,1,6,TP - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z17|6899,Saratov,17,6899,"r82_c45, NE",r82_c45,Quadrant output,1,-8,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z17|6901,Saratov,17,6901,"r82_c45, SE",r82_c45,Quadrant output,1,5,TP - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z17|6902,Saratov,17,6902,r82_c46,r82_c46,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6927,Saratov,17,6927,r83_c43,r83_c43,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6928,Saratov,17,6928,r83_c44,r83_c44,Original output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6930,Saratov,17,6930,"r83_c45, NW",r83_c45,Quadrant output,1,3,FN - warhead storage,warhead_storage,SAR-WHS-03
+Saratov|z17|6932,Saratov,17,6932,"r83_c45, SW",r83_c45,Quadrant output,1,-8,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|6933,Saratov,17,6933,"r83_c45, SE",r83_c45,Quadrant output,1,-3,FN - warhead storage - cut off,warhead_storage,SAR-WHS-03
+Saratov|z17|5112,Saratov,17,5112,r57_c47,r57_c47,Original output,1,5,TP - warhead rail-to-road transfer facility,warhead_rail_to_road_transfer,SAR-XFER-01
+Saratov|z17|5113,Saratov,17,5113,r57_c48,r57_c48,Original output,1,7,TP - warhead rail-to-road transfer facility,warhead_rail_to_road_transfer,SAR-XFER-01

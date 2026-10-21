@@ -1,0 +1,3 @@
+condition,best_epoch,epochs_run,best_shared_val_pr_auc,best_shared_val_auroc,best_shared_val_loss
+C [CUDA],10.667 ± 2.887,16.667 ± 2.887,0.948 ± 0.024,0.952 ± 0.017,0.306 ± 0.018
+C_matched [CUDA],7.667 ± 3.215,13.667 ± 3.215,0.923 ± 0.010,0.918 ± 0.005,0.367 ± 0.070

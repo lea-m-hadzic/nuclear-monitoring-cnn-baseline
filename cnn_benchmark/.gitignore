@@ -1,0 +1,40 @@
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# model weights / checkpoints (heavyweight)
+*.pt
+*.pth
+*.ckpt
+
+# training runs and plumbing smoke tests (never results)
+outputs/runs/
+outputs/_PIPELINE_SMOKE_TEST_ONLY/
+
+# imagery must never be committed (only the small validation plot is kept)
+outputs/**/*.jpg
+outputs/**/*.png
+!outputs/vlm_facility_recall_vs_review_area.png
+
+# local, machine-specific cache index (regenerate with src/image_index.py)
+outputs/image_index.csv
+outputs/_FULLRES_SANITY_CHECK_ONLY/
+!outputs/artifact_audit/fixed_pattern_maps.png
+!outputs/artifact_audit/seam_profiles.png
+
+# pre-decoded image cache (derived imagery; never commit)
+cache/
+
+# external-data reproduction checks (Google imagery, manifests)
+external_data/_validation/
+# real coordinate lists stay local; only the header-only template is tracked
+external_data/*.csv
+!external_data/external_facilities.template.csv
+!outputs/external_data/jitter_and_centre_bias.png
+
+# ResNet ablation: checkpoints, run outputs and dry runs (manifests + checks stay trackable)
+outputs/ablation/runs/
+outputs/ablation/_DRY_RUN_ONLY/

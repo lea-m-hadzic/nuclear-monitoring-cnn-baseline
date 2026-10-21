@@ -1,0 +1,88 @@
+{
+ "run_label": "ablation",
+ "condition": "A_unmasked",
+ "seed": 0,
+ "freeze": {
+  "checksums": {
+   "ablation_config.yaml": "9a041192c2398a54e96f1a2c30a2269ec32002b7b9abc1647597252565600028",
+   "manifest_A": "e0e811f13bb3941b7746cfe0265da5c6422254e9571814a402ac04d08cf37fa9",
+   "manifest_B": "b60ad63dc53ab3c97fb9d41dddd8c25b8e5c660437870d976aaf2d8237cff811",
+   "manifest_C": "fe5b7a2cbf74e72a1724623806baf3b3a3cf73821f3acd7c020c2987cb78ce04",
+   "shared_val.csv": "ade287782b7010f97ded78558422de638ddf58f2c544b218e1ebcd9b777d23f9",
+   "watermark_template": "4a358002977156e09e9d21beddc9d6f4d0569bf9f3c74df350860897bbfde24f",
+   "watermark_geometry.csv": "988788dabed1a93c3f54d7a791683a05fae1fbb578fdebe3fd9e9c4de8fd0043"
+  },
+  "git_at_freeze": {
+   "commit": "8742c46c885a08d99698ec252960d9005f590141",
+   "branch": "resnet-negative-ablation",
+   "tracked_changes": [],
+   "diff_vs_head_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+ },
+ "freeze_robustness": {
+  "checksums": {
+   "ablation_config.yaml": "9a041192c2398a54e96f1a2c30a2269ec32002b7b9abc1647597252565600028",
+   "manifest_A": "e0e811f13bb3941b7746cfe0265da5c6422254e9571814a402ac04d08cf37fa9",
+   "manifest_B": "b60ad63dc53ab3c97fb9d41dddd8c25b8e5c660437870d976aaf2d8237cff811",
+   "manifest_C": "fe5b7a2cbf74e72a1724623806baf3b3a3cf73821f3acd7c020c2987cb78ce04",
+   "shared_val.csv": "ade287782b7010f97ded78558422de638ddf58f2c544b218e1ebcd9b777d23f9",
+   "watermark_template": "4a358002977156e09e9d21beddc9d6f4d0569bf9f3c74df350860897bbfde24f",
+   "watermark_geometry.csv": "988788dabed1a93c3f54d7a791683a05fae1fbb578fdebe3fd9e9c4de8fd0043",
+   "manifest_C_matched": "b37bc2ce8c1e207ce647f5754017195e5ec0c2ab33df05adfa88b84a0e3f19e6",
+   "matrix": "C_matched seeds 0-2 (masked); A_unmasked, C_unmasked seeds 0-2 (--no-mask only); recipe otherwise frozen"
+  },
+  "git_at_freeze": {
+   "commit": "be0d861740d82238b7e3bdd07b6dcc8820850a81",
+   "branch": "cnn-robustness-checks",
+   "tracked_changes": [],
+   "diff_vs_head_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+ },
+ "git_at_launch": {
+  "commit": "ee7e38bded92af5f2052dd6ed8b6ee333a19b61e",
+  "branch": "cnn-robustness-checks",
+  "tracked_changes": [],
+  "diff_vs_head_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+ },
+ "backend": {
+  "torch": "2.8.0",
+  "device_name": "mps",
+  "tf32": null,
+  "precision": "fp32"
+ },
+ "manifest": "outputs/ablation/manifests/A.csv",
+ "manifest_sha256": "e0e811f13bb3941b7746cfe0265da5c6422254e9571814a402ac04d08cf37fa9",
+ "watermark_mask": "none",
+ "watermark_template_sha256": null,
+ "watermark_geometry_sha256": null,
+ "shared_val": "outputs/ablation/manifests/shared_val.csv",
+ "shared_val_sha256": "ade287782b7010f97ded78558422de638ddf58f2c544b218e1ebcd9b777d23f9",
+ "n_train": 357,
+ "n_train_pos": 231,
+ "n_train_neg": 126,
+ "n_val": 118,
+ "n_val_pos": 56,
+ "val_roles": {
+  "positive": 56,
+  "hard": 31,
+  "nearby": 31
+ },
+ "pos_weight": 0.5454545454545454,
+ "training": {
+  "input_size": 1280,
+  "batch_size": 4,
+  "lr": 0.0001,
+  "weight_decay": 0.0001,
+  "pretrained": true
+ },
+ "ablation": {
+  "epochs_max": 20,
+  "early_stopping": {
+   "metric": "shared_val_pr_auc",
+   "patience": 5,
+   "min_epochs": 5
+  },
+  "watermark_mask": "geometric"
+ },
+ "device": "mps"
+}

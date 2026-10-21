@@ -1,0 +1,27 @@
+region,facility,C [CUDA],C_matched [CUDA]
+Saratov,SAR-SILO-02 (icbm_silo),22.262 ± 24.322,32.459 ± 19.013
+Saratov,SAR-SILO-03 (icbm_silo),4.740 ± 4.384,63.937 ± 23.371
+Saratov,SAR-SILO-04 (icbm_silo),36.385 ± 25.745,62.692 ± 16.813
+Saratov,SAR-SILO-05 (icbm_silo),66.546 ± 19.214,92.542 ± 4.200
+Saratov,SAR-SILO-06 (icbm_silo),66.378 ± 35.596,45.553 ± 18.434
+Saratov,SAR-SILO-07 (icbm_silo),20.586 ± 27.208,52.950 ± 28.466
+Saratov,SAR-SILO-08 (icbm_silo),22.358 ± 6.261,67.839 ± 11.008
+Saratov,SAR-SILO-09 (icbm_silo),74.780 ± 17.302,29.180 ± 2.921
+Saratov,SAR-SILO-10 (icbm_silo),45.122 ± 37.550,34.183 ± 23.715
+Saratov,SAR-SILO-11 (icbm_silo),35.882 ± 8.108,32.507 ± 12.656
+Saratov,SAR-SILO-12 (icbm_silo),56.061 ± 34.329,33.105 ± 4.894
+Saratov,SAR-SILO-13 (icbm_silo),4.787 ± 6.312,39.473 ± 2.674
+Saratov,SAR-SILO-14 (icbm_silo),11.825 ± 14.871,19.677 ± 10.250
+Saratov,SAR-SILO-15 (icbm_silo),80.095 ± 5.785,60.897 ± 17.656
+Saratov,SAR-SILO-16 (icbm_silo),7.062 ± 3.027,74.302 ± 26.664
+Saratov,SAR-SILO-17 (icbm_silo),16.253 ± 11.485,52.471 ± 6.178
+Saratov,SAR-SILO-18 (icbm_silo),13.573 ± 8.509,76.049 ± 3.098
+Saratov,SAR-SILO-19 (icbm_silo),28.342 ± 19.988,46.391 ± 20.680
+Saratov,SAR-SILO-20 (icbm_silo),19.437 ± 3.144,38.324 ± 16.775
+Saratov,SAR-SILO-21 (icbm_silo),35.858 ± 26.296,37.127 ± 20.962
+Saratov,SAR-WHS-01 (warhead_storage),3.615 ± 3.167,13.261 ± 13.307
+Saratov,SAR-WHS-02 (warhead_storage),2.513 ± 1.499,7.923 ± 5.143
+Saratov,SAR-WHS-03 (warhead_storage),1.939 ± 1.944,5.147 ± 1.975
+Saratov,SAR-XFER-01 (warhead_rail_to_road_transfer),58.790 ± 8.221,67.097 ± 7.285
+Natanz,NAT-ENR-01 (enrichment_plant),0.170 ± 0.074,4.299 ± 4.352
+Fordow,FOR-ENR-01 (enrichment_plant),0.638 ± 0.511,12.642 ± 2.171

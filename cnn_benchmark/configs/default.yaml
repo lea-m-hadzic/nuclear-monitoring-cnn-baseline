@@ -1,0 +1,73 @@
+# Default configuration for the facility-level CNN benchmark.
+# All source-data paths are relative to the repository root (the parent of cnn_benchmark/).
+# Source files are read-only inputs; nothing in this package writes to them.
+
+sources:
+  workbook: VLM_experiment_results_master.xlsx
+  manuscript: Manuscript 5.docx
+  vlm_csvs:
+    Saratov: saratov_all_results.csv
+    Natanz: natanz_all_results.csv
+    Fordow: fowdow_all_results.csv          # sic: filename is misspelled in the source
+  vlm_csv_z17: saratov_z17_all_results.csv  # used only for manuscript regression, not the CNN benchmark
+  thumbnail_dirs:                           # 320x320 JPEG previews; PIPELINE SMOKE TESTS ONLY
+    Saratov: saratov_51.52_46.00_40km_report_light/assets/images
+    Natanz: natanz_33.72_51.72_30km_report_light/assets/images
+    Fordow: fordow_34.88_51.00_30km_report_light/assets/images
+
+# Full-resolution 2560x2560 parent tiles shared by Qiqi (verified 2560x2560 PNG, 0.742 m/px).
+# Layout: <image_root>/<scan_dir>[ N]/tiles/<original png name> and/or zip parts anywhere under image_root;
+# scan_dir + png name come from the VLM CSV image_path (parent_tiles.csv: source_image_relpath). Check: src/image_index.py
+image_root: data   # relative to the repo root (or absolute; or set $CNN_BENCH_IMAGE_ROOT)
+
+# Canonical per-AOI sources that replace the copies under image_root (matched by exact filename).
+# Natanz: Qiqi's complete re-upload (776/776, 2026-10-09). The older shared Natanz folder mixed 246 benchmark
+# tiles with 261 off-grid tiles; with exclusive: true it is no longer used for resolution (kept on disk).
+image_sources:
+  Natanz:
+    root: NEW_natanz                                   # relative to the repo root; zip parts are read in place
+    scan_dir: natanz_30km_tiles_auto_mosaic_reupload   # folder name inside the re-upload (alias)
+    exclusive: true
+
+regions: [Saratov, Natanz, Fordow]
+benchmark_zoom: 16
+
+geometry:
+  z16_parent_tile_km: 1.9
+  z16_parent_area_km2: 3.61
+  # Nominal AOI areas used by the manuscript for "% of area" (pi * r^2): 40 km and 30 km radius.
+  aoi_area_km2_nominal:
+    Saratov: 5027
+    Natanz: 2827
+    Fordow: 2827
+
+facility_reconstruction:
+  # Single-linkage distance (km) for grouping workbook rows whose human label names the same
+  # target type. 2.5 km reproduces manuscript Tables 2 and 3 exactly; it is a reconstruction, not
+  # an author-provided mapping.
+  cluster_link_km: 2.5
+  cross_zoom_match_km: 2.5
+
+evaluation:
+  recall_targets: [0.5, 0.75, 0.9, 1.0]
+  vlm_threshold: 5
+
+splits:
+  saratov_n_blocks: 5
+  seed: 20261007
+  buffer_tiles: 1   # Chebyshev distance in (row, col) grid units
+
+training:
+  input_size: 1280         # 2560 -> 1280 px (~1.5 m GSD); confirm fences remain visible before real runs
+  batch_size: 4
+  epochs: 20
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  num_workers: 4            # source-PNG path
+  num_workers_decoded_cache: 0   # measured fastest on Apple MPS with the decoded cache (0.33 vs 0.52 s/img with 6)
+  pretrained: true         # torchvision ImageNet weights (downloaded to the torch cache on first use)
+
+# Pre-decoded 1280 px cache (src/decoded_cache.py): exact 2x box reduce of the source PNGs, uint8 .npy per tile.
+# Relative to cnn_benchmark/ (git-ignored); override with $CNN_BENCH_DECODED_CACHE. Used by train/predict with
+# --decoded-cache (only valid for input_size 1280).
+decoded_cache_dir: cache/decoded_1280px

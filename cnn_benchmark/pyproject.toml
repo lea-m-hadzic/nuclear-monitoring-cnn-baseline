@@ -1,0 +1,9 @@
+[project]
+name = "cnn-benchmark"
+version = "0.1.0"
+description = "Facility-level CNN baseline for the broad-area-search (layered fencing) paper"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

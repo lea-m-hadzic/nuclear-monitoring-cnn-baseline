@@ -1,0 +1,104 @@
+{
+ "A [MPS, mask on]/seed0": {
+  "device": "mps",
+  "backend": null,
+  "watermark_mask": "geometric",
+  "git": "8742c46c885a08d99698ec252960d9005f590141"
+ },
+ "A [MPS, mask on]/seed1": {
+  "device": "mps",
+  "backend": null,
+  "watermark_mask": "geometric",
+  "git": "8742c46c885a08d99698ec252960d9005f590141"
+ },
+ "A [MPS, mask on]/seed2": {
+  "device": "mps",
+  "backend": null,
+  "watermark_mask": "geometric",
+  "git": "8742c46c885a08d99698ec252960d9005f590141"
+ },
+ "C [MPS, mask on]/seed0": {
+  "device": "mps",
+  "backend": null,
+  "watermark_mask": "geometric",
+  "git": "8742c46c885a08d99698ec252960d9005f590141"
+ },
+ "C [MPS, mask on]/seed1": {
+  "device": "mps",
+  "backend": null,
+  "watermark_mask": "geometric",
+  "git": "8742c46c885a08d99698ec252960d9005f590141"
+ },
+ "C [MPS, mask on]/seed2": {
+  "device": "mps",
+  "backend": null,
+  "watermark_mask": "geometric",
+  "git": "8742c46c885a08d99698ec252960d9005f590141"
+ },
+ "A [MPS, mask off]/seed0": {
+  "device": "mps",
+  "backend": {
+   "torch": "2.8.0",
+   "device_name": "mps",
+   "tf32": null,
+   "precision": "fp32"
+  },
+  "watermark_mask": "none",
+  "git": "ee7e38bded92af5f2052dd6ed8b6ee333a19b61e"
+ },
+ "A [MPS, mask off]/seed1": {
+  "device": "mps",
+  "backend": {
+   "torch": "2.8.0",
+   "device_name": "mps",
+   "tf32": null,
+   "precision": "fp32"
+  },
+  "watermark_mask": "none",
+  "git": "83b43d704259e84d13abb0bd683fd4048fd14d07"
+ },
+ "A [MPS, mask off]/seed2": {
+  "device": "mps",
+  "backend": {
+   "torch": "2.8.0",
+   "device_name": "mps",
+   "tf32": null,
+   "precision": "fp32"
+  },
+  "watermark_mask": "none",
+  "git": "83b43d704259e84d13abb0bd683fd4048fd14d07"
+ },
+ "C [MPS, mask off]/seed0": {
+  "device": "mps",
+  "backend": {
+   "torch": "2.8.0",
+   "device_name": "mps",
+   "tf32": null,
+   "precision": "fp32"
+  },
+  "watermark_mask": "none",
+  "git": "83b43d704259e84d13abb0bd683fd4048fd14d07"
+ },
+ "C [MPS, mask off]/seed1": {
+  "device": "mps",
+  "backend": {
+   "torch": "2.8.0",
+   "device_name": "mps",
+   "tf32": null,
+   "precision": "fp32"
+  },
+  "watermark_mask": "none",
+  "git": "83b43d704259e84d13abb0bd683fd4048fd14d07"
+ },
+ "C [MPS, mask off]/seed2": {
+  "device": "mps",
+  "backend": {
+   "torch": "2.8.0",
+   "device_name": "mps",
+   "tf32": null,
+   "precision": "fp32"
+  },
+  "watermark_mask": "none",
+  "git": "83b43d704259e84d13abb0bd683fd4048fd14d07"
+ }
+}

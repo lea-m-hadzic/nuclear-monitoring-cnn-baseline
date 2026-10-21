@@ -1,0 +1,106 @@
+{
+ "sampling_seed": "external-v1",
+ "negatives_per_split": {
+  "train": 126,
+  "val": 31
+ },
+ "conditions": {
+  "A": {
+   "counts": {
+    "train": {
+     "nearby": 126,
+     "positive": 231
+    },
+    "val": {
+     "nearby": 31,
+     "positive": 56
+    }
+   },
+   "n_pos": 287,
+   "n_neg": 157,
+   "duplicate_tiles": 0,
+   "split_groups_in_both_splits": 0,
+   "facilities_in_both_splits": 0,
+   "sha256": "e0e811f13bb3941b7746cfe0265da5c6422254e9571814a402ac04d08cf37fa9"
+  },
+  "B": {
+   "counts": {
+    "train": {
+     "hard": 126,
+     "positive": 231
+    },
+    "val": {
+     "hard": 31,
+     "positive": 56
+    }
+   },
+   "n_pos": 287,
+   "n_neg": 157,
+   "duplicate_tiles": 0,
+   "split_groups_in_both_splits": 0,
+   "facilities_in_both_splits": 0,
+   "sha256": "b60ad63dc53ab3c97fb9d41dddd8c25b8e5c660437870d976aaf2d8237cff811"
+  },
+  "C": {
+   "counts": {
+    "train": {
+     "hard": 63,
+     "nearby": 63,
+     "positive": 231
+    },
+    "val": {
+     "hard": 16,
+     "nearby": 15,
+     "positive": 56
+    }
+   },
+   "n_pos": 287,
+   "n_neg": 157,
+   "duplicate_tiles": 0,
+   "split_groups_in_both_splits": 0,
+   "facilities_in_both_splits": 0,
+   "sha256": "fe5b7a2cbf74e72a1724623806baf3b3a3cf73821f3acd7c020c2987cb78ce04"
+  },
+  "C_matched": {
+   "counts": {
+    "train": {
+     "hard": 63,
+     "nearby": 63,
+     "positive": 231
+    },
+    "val": {
+     "hard": 16,
+     "nearby": 15,
+     "positive": 56
+    }
+   },
+   "n_pos": 287,
+   "n_neg": 157,
+   "duplicate_tiles": 0,
+   "split_groups_in_both_splits": 0,
+   "facilities_in_both_splits": 0,
+   "sha256": "b37bc2ce8c1e207ce647f5754017195e5ec0c2ab33df05adfa88b84a0e3f19e6"
+  }
+ },
+ "shared_val": {
+  "counts": {
+   "hard": 31,
+   "nearby": 31,
+   "positive": 56
+  },
+  "only_val_split": true,
+  "tiles_in_any_train": 0,
+  "split_groups_in_any_train": 0,
+  "facilities_in_any_train": 0,
+  "contains_every_main_condition_val": {
+   "A": true,
+   "B": true,
+   "C": true
+  },
+  "sha256": "ade287782b7010f97ded78558422de638ddf58f2c544b218e1ebcd9b777d23f9"
+ },
+ "identical_positives": true,
+ "C_nearby_subset_of_A": true,
+ "C_matched_hard_equals_C_hard": true,
+ "negatives_equal_per_split": true
+}

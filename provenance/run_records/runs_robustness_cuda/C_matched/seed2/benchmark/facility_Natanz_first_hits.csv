@@ -1,0 +1,2 @@
+facility_id,n_footprint_units,best_score,first_hit_units,tie_group_size,footprint_units_in_group,first_hit_rank_group_end,first_hit_area_group_end_km2,first_hit_rank_optimistic,first_hit_rank_pessimistic,first_hit_rank_expected,first_hit_area_expected_km2,first_hit_pct_aoi_group_end,first_hit_pct_aoi_expected
+NAT-ENR-01,3,0.3332415223121643,r16_c16,1,1,31,111.91,31,31,31.0,111.91,3.958613371064733,3.958613371064733

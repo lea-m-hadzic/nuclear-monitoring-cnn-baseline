@@ -1,0 +1,9 @@
+metric,region,aoi_order,pooled_order,aoi_spread,mean_seed_std
+tile_auroc,Fordow,C > A > B,A > C > B,0.073,0.061
+tile_pr_auc,Natanz,A > C > B,C > A > B,0.302,0.12
+facility_recall@5%,Natanz,A > C > B,C > A > B,1.0,0.0
+facility_recall@5%,Fordow,A > C > B,C > A > B,1.0,0.192
+facility_recall@10%,Natanz,A > C > B,C > A > B,1.0,0.0
+facility_recall@10%,Fordow,A > C > B,C > A > B,1.0,0.0
+facility_recall@20%,Natanz,A > C > B,C > A > B,0.667,0.192
+facility_recall@20%,Fordow,A > C > B,C > A > B,0.333,0.192

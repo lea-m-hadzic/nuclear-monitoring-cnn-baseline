@@ -1,0 +1,28 @@
+# Source imagery cache. Never commit: manifest.csv files embed a Google Maps API key.
+data/
+.DS_Store
+
+# Canonical Natanz re-upload (source imagery; its manifest.csv embeds an API key). Never commit.
+NEW_natanz/
+
+# Source data at the repo root: read by the benchmark, never committed (anchored to the root on purpose)
+/*.docx
+/*.xlsx
+/*_all_results.csv
+/*_report_light/
+
+# Downloads, caches and imagery anywhere in the repo
+*.zip
+*.npy
+manifest.csv
+
+# Vendored third-party code (Qiqi's extraction repo; cloned, pinned in cnn_benchmark/external_data/extraction_config.yaml)
+vendor/
+
+# External training imagery + its vendor manifests/logs (coordinates; manifests may hold an API key before sanitizing)
+external_imagery/
+.env
+.env.*
+
+# Yanliang's external positive coordinates (private; never commit)
+/Reviewed fence list.csv

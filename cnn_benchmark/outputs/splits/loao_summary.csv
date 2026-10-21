@@ -1,0 +1,13 @@
+split,fold,test_region,role,tiles,positives,nuclear_target_tiles,excluded
+loao,0,Natanz,buffer,83,1,1,0
+loao,0,Natanz,test,776,8,3,4
+loao,0,Natanz,train,1648,120,35,0
+loao,0,Natanz,val,433,17,0,0
+loao,1,Fordow,buffer,87,0,0,0
+loao,1,Fordow,test,777,36,3,0
+loao,1,Fordow,train,1640,90,33,0
+loao,1,Fordow,val,436,20,3,4
+loao,2,Saratov,buffer,76,1,1,0
+loao,2,Saratov,test,1387,102,33,0
+loao,2,Saratov,train,1152,30,2,0
+loao,2,Saratov,val,325,13,3,4

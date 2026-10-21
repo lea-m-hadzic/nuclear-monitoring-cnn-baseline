@@ -1,0 +1,11 @@
+2026-10-19 15:51:23 START C_matched seed0
+2026-10-19 16:41:31 EVAL_FAIL C_matched seed0
+2026-10-19 17:16:34 DONE C_matched seed0 (evaluation re-run after loading fix 804329f)
+2026-10-19 17:16:34 RESUME from C_matched seed1
+2026-10-19 17:16:34 START C_matched seed1
+2026-10-19 18:19:15 DONE C_matched seed1
+2026-10-19 18:19:15 START C_matched seed2
+2026-10-19 19:08:31 DONE C_matched seed2
+2026-10-19 19:08:31 START A_unmasked seed0
+2026-10-19 19:08:37 TRAIN_FAIL A_unmasked seed0
+2026-10-20 08:41:25 renamed runs_robustness -> runs_robustness_cuda (commit ee7e38b); A/C mask-off moved to Mac MPS; C-control queued

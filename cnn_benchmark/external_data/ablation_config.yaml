@@ -1,0 +1,34 @@
+# ResNet-50 negative-composition ablation (external training, benchmark-AOI evaluation).
+# Everything below is identical for every condition and seed; nothing is tuned per condition.
+# Optimiser / loss / augmentation / input are inherited from configs/default.yaml -> training (same as src/train.py).
+
+conditions: [A, B, C]                # main matrix (3 x 3 seeds); C_matched and C_unmasked are optional sensitivity runs
+optional_conditions: [C_matched]     # sampling sensitivity analysis, never reported as the main dataset
+seeds: [0, 1, 2]
+
+epochs_max: 20
+early_stopping:
+  metric: shared_val_pr_auc          # tile-level average precision on the SHARED validation set (identical for A/B/C):
+                                     # 56 val positives + A's 31 nearby val negatives + all 31 confirmed hard val negatives
+  patience: 5                        # stop after 5 epochs without improvement; best checkpoint kept
+  min_epochs: 5
+
+watermark_mask: geometric            # geometric | none. `geometric` = per-tile mask from each tile's source-mosaic geometry
+                                     # (watermark_geometry.py; cache/watermark_geometry/geometry.csv), same template + fill
+                                     # (watermark_mask.fill_rgb) for training, shared val AND benchmark scoring.
+                                     # `none` only for the optional C_unmasked sensitivity run. The old fixed union mask
+                                     # (cache/watermark_union_mask_1280.npy, 5.82 %) is NOT used.
+
+data:
+  manifests_dir: outputs/ablation/manifests
+  shared_val: outputs/ablation/manifests/shared_val.csv
+  mask_geometry: cache/watermark_geometry/geometry.csv
+  external_cache: cache/external_decoded_1280px
+  benchmark_cache: cache/decoded_1280px
+runs_dir: outputs/ablation/runs
+dry_run_dir: outputs/ablation/_DRY_RUN_ONLY
+
+evaluation:
+  regions: [Saratov, Natanz, Fordow]
+  tile_label: human_target           # human-reviewed layered-fence signature of the z16 parent tile
+  headline: facility retrieval vs. review budget (src/evaluation.py, footprint rule)

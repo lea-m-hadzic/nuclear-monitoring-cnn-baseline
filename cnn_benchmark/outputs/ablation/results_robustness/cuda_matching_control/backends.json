@@ -1,0 +1,68 @@
+{
+ "C [CUDA]/seed0": {
+  "device": "cuda",
+  "backend": {
+   "torch": "2.8.0+cu128",
+   "device_name": "NVIDIA A100 80GB PCIe",
+   "tf32": false,
+   "precision": "fp32"
+  },
+  "watermark_mask": "geometric",
+  "git": "ee7e38bded92af5f2052dd6ed8b6ee333a19b61e"
+ },
+ "C [CUDA]/seed1": {
+  "device": "cuda",
+  "backend": {
+   "torch": "2.8.0+cu128",
+   "device_name": "NVIDIA A100 80GB PCIe",
+   "tf32": false,
+   "precision": "fp32"
+  },
+  "watermark_mask": "geometric",
+  "git": "ee7e38bded92af5f2052dd6ed8b6ee333a19b61e"
+ },
+ "C [CUDA]/seed2": {
+  "device": "cuda",
+  "backend": {
+   "torch": "2.8.0+cu128",
+   "device_name": "NVIDIA A100 80GB PCIe",
+   "tf32": false,
+   "precision": "fp32"
+  },
+  "watermark_mask": "geometric",
+  "git": "ee7e38bded92af5f2052dd6ed8b6ee333a19b61e"
+ },
+ "C_matched [CUDA]/seed0": {
+  "device": "cuda",
+  "backend": {
+   "torch": "2.8.0+cu128",
+   "device_name": "NVIDIA A100 80GB PCIe",
+   "tf32": false,
+   "precision": "fp32"
+  },
+  "watermark_mask": "geometric",
+  "git": "be0d861740d82238b7e3bdd07b6dcc8820850a81"
+ },
+ "C_matched [CUDA]/seed1": {
+  "device": "cuda",
+  "backend": {
+   "torch": "2.8.0+cu128",
+   "device_name": "NVIDIA A100 80GB PCIe",
+   "tf32": false,
+   "precision": "fp32"
+  },
+  "watermark_mask": "geometric",
+  "git": "804329f01ba27b5faa770da7a1ecb270862e4f0a"
+ },
+ "C_matched [CUDA]/seed2": {
+  "device": "cuda",
+  "backend": {
+   "torch": "2.8.0+cu128",
+   "device_name": "NVIDIA A100 80GB PCIe",
+   "tf32": false,
+   "precision": "fp32"
+  },
+  "watermark_mask": "geometric",
+  "git": "804329f01ba27b5faa770da7a1ecb270862e4f0a"
+ }
+}
