@@ -1,16 +1,16 @@
-# CNN baseline for *Catching Proliferation at the Fence*
+## CNN baseline for *Catching Proliferation at the Fence*
 
 This is an internal research-results repository. 
 
 **Private: see `PRIVATE_DATA_NOTES.md` before sharing anything.**
 
-## 1. What this baseline tests
+### What this baseline tests
 
 - **What it is:** a supervised CNN baseline for the paper's **broad-area-search benchmark**.
 - **What it detects:** the **visible layered-fence / secure-facility signature** in 1.9 km tiles. **It is not a nuclear-facility classifier.** Many fenced non-nuclear sites carry the same signature.
 - **How it is evaluated:** it scores every benchmark parent tile (Saratov, Natanz, Fordow), reviews tiles in descending score order, and measures **how many known target facilities are surfaced as review area grows**. That uses the same rule and code as the VLM.
 
-## 2. Final experimental setup
+### Final experimental setup
 
 | | |
 |---|---|
@@ -29,7 +29,7 @@ This is an internal research-results repository.
 
 Details: `notes/METHODOLOGY.md`.
 
-## 3. Main results
+### Main results
 
 **Mean ± SD over 3 seeds.** Facility metrics are primary; tile AUROC and PR-AUC (all 2,940 tiles) are secondary. First-hit area is the expected % of the AOI reviewed before the single Natanz or Fordow facility is surfaced.
 
@@ -47,7 +47,7 @@ Details: `notes/METHODOLOGY.md`.
 
 Files: `results/main/abc_summary.csv`, `facility_metrics.csv` (per seed) and `abc_tables/`.
 
-## 4. Comparison with the VLM (same facility rule, same Saratov imagery)
+### Comparison with the VLM (same facility rule, same Saratov imagery)
 
 | Saratov | VLM (single pass) | CNN C (3 seeds) |
 |---|---|---|
@@ -61,7 +61,7 @@ Files: `results/main/abc_summary.csv`, `facility_metrics.csv` (per seed) and `ab
 
 For the single Natanz and Fordow facilities, both methods surface the plant within the first few percent of the AOI (VLM 1.6% and 4.3%; CNN C 1.7 ± 2.8% and 2.8 ± 3.2%). One facility per AOI is too few for a ranking claim. File: `results/main/vlm_comparison.csv`.
 
-## 5. Robustness and QA
+### Robustness and QA
 
 | Check | Question | Result | Changes main conclusion? |
 |---|---|---|---|
@@ -75,7 +75,7 @@ For the single Natanz and Fordow facilities, both methods surface the plant with
 
 Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `results/robustness/` and `results/qa/`.
 
-## Repository layout
+### Repository layout
 
 ```
 .
@@ -147,7 +147,7 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 
 **Local only (git-ignored, never pushed):** `data/`, `NEW_natanz/` (benchmark imagery), `external_imagery/` (training imagery, coordinates, review packages), `cnn_benchmark/cache/` (decoded caches), `cnn_benchmark/outputs/ablation/runs*/` (checkpoints), the root workbook, manuscript and VLM result CSVs, `vendor/`, and `_local/` (migration manifests). See `PRIVATE_DATA_NOTES.md`.
 
-## Tests
+### Tests
 
 From `cnn_benchmark/`, run `python -m pytest -q`.
 - Tests that need the private workbook or imagery are skipped or fail without them.
