@@ -2,7 +2,7 @@
 
 This is an internal research-results repository. 
 
-**Private: see `PRIVATE_DATA_NOTES.md` before sharing anything.**
+**Private:** see `PRIVATE_DATA_NOTES.md` before sharing anything.
 
 ### What this baseline tests
 
