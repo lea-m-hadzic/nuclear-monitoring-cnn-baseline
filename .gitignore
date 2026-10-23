@@ -39,3 +39,13 @@ results/qa/extraction_audit/extraction_audit_table.csv
 results/robustness/saratov_auto_mosaic/extraction_summary.csv
 # legacy re-scores duplicate the frozen per-run scores (provenance/run_records/runs/C/seed*/benchmark/scores.csv)
 results/robustness/saratov_auto_mosaic/scores_legacy_rescored_seed*.csv
+
+# --- local-only material (added 2026-10-23 after the data migration) ---
+# machine-local migration manifests and scratch (file names can reveal private data)
+/_local/
+# run / stdout logs written next to pipeline outputs (dry runs, aggregation stdout); provenance/ logs stay tracked
+cnn_benchmark/outputs/**/*.log
+# dataset-preparation tables: external candidate / selected sites with coordinates (never track)
+cnn_benchmark/outputs/external_data/*.csv
+# pre-reorganisation output location (superseded mixed-backend tables, stdout logs); current results live in results/
+cnn_benchmark/outputs/ablation/results_robustness/
