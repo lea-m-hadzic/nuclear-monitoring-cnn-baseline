@@ -1,6 +1,8 @@
-# CNN baseline for *Catching Proliferation at the Fence*: frozen results
+# CNN baseline for *Catching Proliferation at the Fence*
 
-This is an internal research-results repository for the paper's collaborators (Yanliang, Sulgi, Aneesh, Mykel, Qiqi, Lea). It is a record of a frozen experiment, not a software package. **Private: see `PRIVATE_DATA_NOTES.md` before sharing anything.**
+This is an internal research-results repository for the paper's collaborators. 
+
+**Private: see `PRIVATE_DATA_NOTES.md` before sharing anything.**
 
 ## 1. What this baseline tests
 
