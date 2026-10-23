@@ -1,12 +1,12 @@
 # CNN baseline for *Catching Proliferation at the Fence*
 
-This is an internal research-results repository for the paper's collaborators. 
+This is an internal research-results repository. 
 
 **Private: see `PRIVATE_DATA_NOTES.md` before sharing anything.**
 
 ## 1. What this baseline tests
 
-- **What it is:** a supervised CNN baseline for the paper's **broad-area-search benchmark**, added at a reviewer's request.
+- **What it is:** a supervised CNN baseline for the paper's **broad-area-search benchmark**.
 - **What it detects:** the **visible layered-fence / secure-facility signature** in 1.9 km tiles. **It is not a nuclear-facility classifier.** Many fenced non-nuclear sites carry the same signature.
 - **How it is evaluated:** it scores every benchmark parent tile (Saratov, Natanz, Fordow), reviews tiles in descending score order, and measures **how many known target facilities are surfaced as review area grows**. That uses the same rule and code as the VLM.
 
@@ -29,7 +29,7 @@ This is an internal research-results repository for the paper's collaborators.
 
 Details: `notes/METHODOLOGY.md`.
 
-## 3. Main results (frozen)
+## 3. Main results
 
 **Mean ± SD over 3 seeds.** Facility metrics are primary; tile AUROC and PR-AUC (all 2,940 tiles) are secondary. First-hit area is the expected % of the AOI reviewed before the single Natanz or Fordow facility is surfaced.
 
@@ -61,7 +61,7 @@ Files: `results/main/abc_summary.csv`, `facility_metrics.csv` (per seed) and `ab
 
 For the single Natanz and Fordow facilities, both methods surface the plant within the first few percent of the AOI (VLM 1.6% and 4.3%; CNN C 1.7 ± 2.8% and 2.8 ± 3.2%). One facility per AOI is too few for a ranking claim. File: `results/main/vlm_comparison.csv`.
 
-## 5. Robustness and QA (all complete)
+## 5. Robustness and QA
 
 | Check | Question | Result | Changes main conclusion? |
 |---|---|---|---|
@@ -74,17 +74,6 @@ For the single Natanz and Fordow facilities, both methods surface the plant with
 | Saratov auto_mosaic sensitivity | Does the Saratov extraction mode matter? | Re-scored with frozen C checkpoints (no retraining): recall @20% 0.54 → 0.51, area to 50% 18.5 → 18.6%; Spearman 0.95–0.97. Below the pre-set materiality rule | **No** |
 
 Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `results/robustness/` and `results/qa/`.
-
-## 6. Final status
-
-- **Labels frozen.** The positives are confirmed. **No negative label has been changed.** The targeted negative review is pending with Yanliang; any change would be assessed and documented separately.
-- **The main A/B/C results are frozen** (inputs frozen at commit `8742c46`; 9 runs; run records in `provenance/run_records/`).
-- **The Saratov legacy imagery remains the reported benchmark,** because it matches the imagery the VLM was scored on.
-- **The auto_mosaic re-scoring did not materially change** the facility-level conclusion.
-- **No further CNN experiments are currently planned.**
-  - FULL_MIXED is off.
-  - A finer-resolution (z17) sensitivity is specified but not run (`notes/proposed/`).
-  - All current results are at about 1.5 m/px; finer resolution is untested.
 
 ## Repository map
 
