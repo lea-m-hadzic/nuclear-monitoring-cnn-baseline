@@ -1,97 +1,17 @@
-# CNN baseline benchmark: facility-level evaluation
+# cnn_benchmark: code guide
 
-## Purpose
+This folder holds the **code** and the pipeline inputs/intermediates (`outputs/`) for the CNN baseline. For what the baseline is, the final results and the QA record, start at the repository `README.md`. Methods and caveats: `../notes/METHODOLOGY.md`.
 
-This is a traditional supervised CNN baseline for the broad-area-search paper *"Catching Proliferation at the Fence"*. The baseline answers a reviewer's request for a CNN comparison. Its headline evaluation is **facility retrieval versus human-review burden**, not tile accuracy.
+- `src/`: benchmark infrastructure. Parent-tile table, provisional facility map, facility-level evaluator (`evaluation.py`), manuscript regression, image index and decoded cache, generic training plumbing.
+- `external_data/`: external training data, the A/B/C ablation (manifests, training, evaluation, aggregation), robustness tables, QA and review packages, extraction audit and the Saratov auto_mosaic re-scoring. Each script's docstring says what it writes. The result-to-script index is `../results/README.md`.
+- `configs/default.yaml`, `external_data/ablation_config.yaml`, `external_data/extraction_config.yaml`: configuration.
+- `outputs/`: inputs and intermediates the code reads or regenerates:
+  - parent table, facility map, splits, VLM scores and evaluation;
+  - ablation manifests and freeze records.
+  - Paper-facing results are in `../results/`; figures are in `../figures/`.
+- `tests/`: offline tests (`python -m pytest -q` from this folder).
 
-## Current status
-
-The infrastructure is complete, and the full-resolution imagery is complete for all three AOIs: Saratov
-1,387/1,387, Fordow 777/777, and Natanz 776/776 (from Qiqi's canonical re-upload). The 2,940-tile decoded cache is
-built and verified, and `src/train.py --dry-run` passes for both split types. The real benchmark is technically
-ready.
-
-**Natanz imagery: RESOLVED (2026-10-09).** The first shared Natanz folder held only 246 of 776 benchmark tiles plus
-261 tiles from a grid about 1° further south. Qiqi's re-upload (`NEW_natanz/`, configured under `image_sources`)
-contains all 776. The 246 overlapping tiles are byte-identical, and the old folder is no longer used.
-The provenance list of the 530 then-missing tiles is in `outputs/natanz_missing_tiles.md`.
-
-Still open (not data):
-- **Author confirmation of the facility mapping.** See `outputs/facility_mapping_questions.md`, split into "must
-  decide before final training" and "can defer".
-- **Method decisions** listed in `outputs/meeting_summary.md`, e.g. the watermark mask and the training schedule.
-
-Meeting status: `outputs/meeting_summary.md`. Saratov full-res sanity check (plumbing/runtime only):
-`outputs/fullres_sanity_check_summary.md`. Watermark/seam audit: `outputs/artifact_audit/artifact_audit.md`.
-
-The code already does the following:
-- Builds the canonical parent-tile dataset and the provisional facility map from the workbook.
-- Reproduces **all** facility-level numbers in Manuscript Tables 2, 3 and 4, plus the counts quoted in the results text: 96 of 97 checks. The one miss is a narrative claim that the labels do not support (see `outputs/manuscript_reproduction.csv`).
-- Evaluates **any** score file under a common facility-footprint rule.
-- Writes the candidate leakage-safe splits.
-- Has a ResNet-50 training and inference pipeline, tested on thumbnails for plumbing only.
-
-## Benchmark design
-
-| | |
-|---|---|
-| **Training target** | The human-reviewed layered-fencing signature on a z16 parent tile (1.9 km). It is positive if the human label is TP or FN, aggregated from quadrant labels when the VLM zoomed in. It is **never** derived from VLM scores. |
-| **Model** | torchvision ResNet-50, ImageNet-pretrained, single-logit head, BCE weighted by n_neg/n_pos, random 90° rotations and flips. Input 2560 → 1280 px by default (configurable). |
-| **Evaluation unit** | A known target facility. A facility is surfaced once any z16 parent tile in its footprint has been reviewed. |
-| **Primary metric** | Facility recall vs. area reviewed (km² and % of AOI) as tiles are reviewed in descending score order (Saratov: 24 facilities). |
-| **Secondary metrics** | Area needed for 50/75/90/100% recall; per-facility first-hit rank and area (the only meaningful metric for Natanz and Fordo, which have one facility each); workload reduction (1 − area/AOI). |
-| **Scope** | z16 only: Saratov (1,387 parents), Natanz (776), Fordo (777). z17 is used only for manuscript regression. |
-
-### Two surfacing rules, kept separate
-
-- **Rule A, `manuscript_reasoning_validated`** (`src/manuscript_rule.py`). This is the manuscript's own rule. Units are VLM output images (parents, quadrants, zoom-out blocks). A facility is surfaced if a unit scored ≥ t carries a human label naming it. The reasoning check is already folded into the TP labels: tiles with a rejected rationale were labelled FP and lost the facility name. Rule A is used only to reproduce the paper.
-- **Rule B, `footprint_parent_tiles`** (`src/evaluation.py`). This is the common rule for comparing the CNN and the VLM. Units are z16 parent tiles, each counting as 3.61 km² of review. A facility is surfaced when any parent in its footprint is reviewed. It needs no reasoning trace, so it applies equally to CNN and VLM scores. VLM parent scores come in two variants: single pass, and "adaptive max" (the max over the final outputs inside the parent).
-
-### Parent-label aggregation (`src/build_parent_table.py`)
-
-| Parent stage | `human_target` | Flags |
-|---|---|---|
-| Not followed up (`Original output`) | Its own label is TP or FN | — |
-| Replaced by quadrants | **Any quadrant** is TP or FN (quadrants tile the parent exactly) | If the parent's own label disagrees: `label_conflict` → `exclude_from_training`, `needs_author_confirmation` (4 Natanz tiles) |
-| Replaced by zoom-out blocks only | The parent's own label | `zoomout_only_followup`, `needs_author_confirmation` (3 tiles). Blocks are offset 1.9 km views and are never aggregated. |
-
-Labels containing "cut off", "former" or "under renovation" are kept but flagged `ambiguous_label`, for sensitivity runs. Tiles excluded from training are still scored and evaluated.
-
-### Facility reconstruction (`src/facility_mapping.py`, PROVISIONAL)
-
-The workbook has no facility IDs.
-- **Natanz and Fordo:** all rows whose label names the site.
-- **Saratov:** rows naming a target type (silo, warhead storage, transfer point, waste repository), grouped by single-linkage clustering of their centres at 2.5 km, per zoom. z17 clusters are matched to z16 IDs.
-
-This reproduces Tables 2 and 3 exactly, but it remains a reconstruction:
-- **21 z16 silo locations vs 20 in the paper.** The unmatched one (`SAR-SILO-01`, `r2_c17`) is kept with status `candidate_extra_silo_not_in_manuscript_count` and is excluded from the default denominator. Use `--include-candidate-facilities` to include it.
-- **The waste repository** is kept as a non-target, as the manuscript specifies.
-
-### Tie policy (`src/evaluation.py`)
-
-VLM scores are integers with large ties.
-- **Default `group`:** all units with the same score are reviewed together. This is equivalent to thresholding at score ≥ t. First-hit metrics are reported at the end of the group, which is the conservative choice.
-- **`optimistic` / `pessimistic`:** bounds that review footprint units first or last within each tie.
-- **Expected rank under random tie-breaking:** always reported, (g+1)/(k+1) within the group.
-
-Continuous CNN scores rarely tie, so the policies coincide for them.
-
-### Candidate splits (`src/splits.py`, NOT FINAL)
-
-- **`saratov_spatial_cv`:** 5 k-means blocks on the tile grid. Every facility footprint is kept in one block. In each fold, test = block k and val = block k+1; tiles within 1 tile (Chebyshev distance) of a test or val tile become buffer and are excluded from training.
-- **`loao`:** test on one whole AOI and train on the other two. Each training AOI holds out one validation block plus buffer, chosen to lose the fewest positives.
-
-Automatic checks cover: a facility split across roles, train tiles next to held-out tiles, non-z16 IDs (z17 or quadrant), duplicate assignments, duplicate images, and each Saratov tile appearing in test exactly once.
-
-## Important caveats
-
-- **The human labels are not independent of the VLM.** They were made while reviewing VLM outputs and reasoning, and are recorded as TP/FP/TN/FN relative to VLM score ≥ 5. VLM-flagged tiles were inspected more closely (at quadrant level); tiles with real fencing but wrong VLM reasoning may be labelled FP.
-- **Facility-level evaluation is the headline.** The facility list comes from outside sources and is not defined by VLM outputs, but its tile footprint is reconstructed from those labels.
-- **The CNN is supervised; the VLM is zero-shot.** Always report the labels used next to any comparison, and never present within-Saratov spatial CV as cross-region generalisation.
-- **z17 is excluded** from the CNN experiment (same ground as z16; never mix them).
-- **The facility map is provisional** (`needs_author_confirmation`). Natanz and Fordo have one facility each, so report first-hit area rather than recall percentages.
-- **The 320 px thumbnails are for `PIPELINE_SMOKE_TEST_ONLY`.** Those runs are written to `outputs/_PIPELINE_SMOKE_TEST_ONLY/` (git-ignored), and the evaluator routes any score file carrying that label there.
-- **Source data are read-only inputs** at the repository root and are never modified.
+Commands below are the original development instructions. The **frozen** experiments must not be re-run; they are documented for provenance and reproduction.
 
 ## How to run
 

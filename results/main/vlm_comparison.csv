@@ -1,0 +1,5 @@
+metric,cnn_C_mean,cnn_C_sd,cnn_C_seed_values,vlm_single_pass,note
+saratov_recall_at_20pct,0.5417,0.0417,0.5000;0.5833;0.5417,0.7083,
+saratov_area_to_50pct,18.5036,1.3287,17.1631;18.5276;19.8202,9.4074,CNN C needs 1.97x the VLM's review area to reach 50% Saratov recall (n = 3 seeds; no significance claim)
+natanz_first_hit_pct,1.7452,2.8016,0.1277;0.1277;4.9802,1.5962,
+fordow_first_hit_pct,2.7668,3.1522,0.1277;6.2572;1.9155,4.3417,

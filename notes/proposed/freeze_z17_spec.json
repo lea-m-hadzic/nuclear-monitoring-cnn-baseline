@@ -1,0 +1,12 @@
+{
+ "status": "proposed_optional_sensitivity_frozen_not_run",
+ "frozen_on": "2026-10-21",
+ "spec": "outputs/ablation/z17_sensitivity_spec.md",
+ "spec_sha256": "639c9ab1551324d7b1f93ae9badf5e67dcc2019601f08c3e597af92ba68d4bb7",
+ "pinned_inputs_sha256": {
+  "manifest_C": "fe5b7a2cbf74e72a1724623806baf3b3a3cf73821f3acd7c020c2987cb78ce04",
+  "shared_val": "ade287782b7010f97ded78558422de638ddf58f2c544b218e1ebcd9b777d23f9"
+ },
+ "gates": ["explicit approval from Lea", "Yanliang targeted negative review returned; any label change requires revisiting this spec"],
+ "git_head_at_freeze": "a04f6aa3922599aa521d6183912a7a7ff2f13108"
+}

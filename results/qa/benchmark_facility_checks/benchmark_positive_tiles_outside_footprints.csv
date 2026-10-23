@@ -1,0 +1,107 @@
+region,tile_id,positive_label_details
+Saratov,r6_c14,FN - military base
+Saratov,r11_c29,TP - airport
+Saratov,r12_c5,FN - military base; TP - military base
+Saratov,r12_c6,FN - military base
+Saratov,r12_c8,TP - farm
+Saratov,r13_c8,FN - military base/60th Taman Rocket Division HQ; TP - military base
+Saratov,r13_c9,FN - military base
+Saratov,r13_c15,TP - oil/gas
+Saratov,r14_c14,TP - industry
+Saratov,r14_c18,FN - prison
+Saratov,r14_c19,TP - industry
+Saratov,r16_c17,TP - warehouse
+Saratov,r16_c18,TP - industry
+Saratov,r16_c20,TP - oil/gas
+Saratov,r16_c21,TP - water
+Saratov,r16_c22,TP - power
+Saratov,r16_c26,TP - residential
+Saratov,r17_c17,"TP - infectious hospital, prison missed"
+Saratov,r18_c18,FN - electronics lab
+Saratov,r18_c19,FN - electronics lab
+Saratov,r19_c16,TP - military base
+Saratov,r19_c23,TP - military base
+Saratov,r19_c35,FN - military base/air force comms
+Saratov,r20_c10,TP - oil/gas
+Saratov,r20_c16,FN - airbase
+Saratov,r20_c17,FN - military base
+Saratov,r20_c21,FN - TV tower
+Saratov,r20_c25,TP - oil/gas
+Saratov,r20_c35,TP - military base/air force comms
+Saratov,r21_c10,TP - oil/gas
+Saratov,r21_c16,FN - airbase
+Saratov,r21_c17,TP - airbase
+Saratov,r21_c31,TP - residential
+Saratov,r23_c24,FN - oil/gas
+Saratov,r23_c28,FN - water
+Saratov,r23_c30,FN - airbase
+Saratov,r23_c31,FN - airbase
+Saratov,r24_c24,FN - oil/gas
+Saratov,r24_c28,TP - airbase
+Saratov,r24_c29,TP - airbase
+Saratov,r24_c30,FN - airbase; TP - airbase
+Saratov,r24_c31,TP - ammo
+Saratov,r24_c32,TP - ammo
+Saratov,r25_c27,TP - prison
+Saratov,r25_c28,TP - military base
+Saratov,r25_c29,TP - airbase
+Saratov,r25_c30,FN - airbase
+Saratov,r26_c17,TP - industry
+Saratov,r26_c18,FN - industry; TP - industry
+Saratov,r26_c19,TP - power
+Saratov,r26_c20,TP - industry
+Saratov,r26_c27,TP - industry; TP - prison
+Saratov,r27_c17,TP - oil/gas
+Saratov,r27_c18,TP - prison
+Saratov,r27_c19,TP - industry
+Saratov,r27_c20,TP - oil/gas
+Saratov,r27_c25,FN - oil/gas
+Saratov,r27_c27,FN - industry
+Saratov,r28_c20,FN - oil/gas
+Saratov,r28_c21,TP - oil/gas
+Saratov,r28_c28,FN - military base
+Saratov,r31_c25,TP - power
+Saratov,r31_c33,FN - farm
+Saratov,r32_c8,TP - military base
+Saratov,r33_c29,FN - farm
+Saratov,r34_c8,TP - oil/gas
+Saratov,r35_c22,TP - oil/gas
+Saratov,r35_c26,TP - oil/gas
+Natanz,r3_c9,TP - industry
+Natanz,r7_c14,TP - power
+Natanz,r7_c15,TP - power
+Natanz,r8_c14,FN - power
+Natanz,r8_c15,TP - industry; TP - power
+Fordow,r3_c18,FN - industry
+Fordow,r3_c19,FN - industry
+Fordow,r4_c15,TP - oil/gas
+Fordow,r4_c18,FN - industry
+Fordow,r4_c19,FN - industry
+Fordow,r9_c2,FN
+Fordow,r9_c3,FN - military base
+Fordow,r10_c3,TP - military base
+Fordow,r11_c2,TP - military base
+Fordow,r11_c4,FN - military base
+Fordow,r11_c5,FN - military base
+Fordow,r11_c7,TP - airbase infrastructure
+Fordow,r12_c2,FN - military base
+Fordow,r12_c5,FN - military base
+Fordow,r13_c2,FN - military base
+Fordow,r13_c6,TP - military base
+Fordow,r13_c7,FN - military base
+Fordow,r14_c2,FN - military base
+Fordow,r14_c5,FN - military base
+Fordow,r14_c6,FN - military base; TP - military base
+Fordow,r14_c7,FN - military base; TP - military bas
+Fordow,r15_c3,FN - military base
+Fordow,r15_c4,FN - military base
+Fordow,r15_c5,FN - military base
+Fordow,r15_c7,TP - military base
+Fordow,r15_c8,FN - military base
+Fordow,r16_c6,TP - military base
+Fordow,r16_c7,FN - military base
+Fordow,r21_c8,TP - industry
+Fordow,r23_c10,FN - compound
+Fordow,r23_c11,FN - airstrip
+Fordow,r23_c12,TP - airstrip
+Fordow,r28_c10,TP - power

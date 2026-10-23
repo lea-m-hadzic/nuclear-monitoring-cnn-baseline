@@ -11,7 +11,7 @@ At the model input scale (1280 px), for a random sample of parent tiles per AOI:
   * per-tile artifact features and their AUC for separating AOIs, before and after masking the union of
     the AOI watermark masks (filled by normalized-convolution blur, a preview only).
 
-  python src/artifact_audit.py [--n 120] [--supplementary-pairwise]  -> outputs/artifact_audit/
+  python src/artifact_audit.py [--n 120] [--supplementary-pairwise]  -> results/qa/artifact_audit/
 The committed audit (2026-10-09) samples Natanz from all 776 canonical tiles; the earlier 2026-10-08 run had only 246.
 Add --supplementary-pairwise for all AOI pairs (incl. Natanz) before/after the union-mask fill.
 """
@@ -90,7 +90,7 @@ def main(argv=None) -> None:
                     help="also write supplementary_pairwise_separation.csv: watermark-contrast separation for every AOI "
                          "pair (incl. Natanz), before/after the union-mask fill. Default outputs are unchanged.")
     args = ap.parse_args(argv)
-    out = OUTPUT_DIR / "artifact_audit"
+    out = OUTPUT_DIR.parent.parent / "results" / "qa" / "artifact_audit"
     out.mkdir(parents=True, exist_ok=True)
 
     root = image_index.image_root_from(None)

@@ -1,12 +1,12 @@
 """Aggregate the robustness runs as two backend-matched comparisons (never mixing backends in one table).
 
-    python aggregate_robustness.py     # -> outputs/ablation/results_robustness/{mps_mask_sensitivity,cuda_matching_control}/
+    python aggregate_robustness.py     # -> results/robustness/{mps_mask_sensitivity,cuda_matching_control}/
 
   mps_mask_sensitivity    Apple MPS: frozen A, C (mask on; outputs/ablation/runs/, read only) vs
                           A_unmasked, C_unmasked (mask off; outputs/ablation/runs_robustness_mps/)
   cuda_matching_control   CUDA, A100 80GB (bend GPU 1): C vs C_matched (both mask on; outputs/ablation/runs_robustness_cuda/)
 
-The frozen A/B/C main ablation keeps its own tables (outputs/ablation/results/, aggregate_ablation.py). Each comparison
+The frozen A/B/C main ablation keeps its own tables (results/main/abc_tables/, aggregate_ablation.py). Each comparison
 is produced by aggregate_ablation.main() unchanged, over a view directory of symlinks, so every metric uses exactly
 the same code as the main ablation. Condition labels carry the backend.
 """
@@ -19,7 +19,7 @@ import aggregate_ablation as aa
 
 PKG = Path(__file__).resolve().parents[1]
 ABL = PKG / "outputs" / "ablation"
-OUT = ABL / "results_robustness"
+OUT = PKG.parent / "results" / "robustness"
 COMPARISONS = {
     "mps_mask_sensitivity": {
         "A [MPS, mask on]": ABL / "runs" / "A", "C [MPS, mask on]": ABL / "runs" / "C",

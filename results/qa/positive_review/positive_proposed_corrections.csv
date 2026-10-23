@@ -1,0 +1,15 @@
+tile_id,split,visual_status,visual_notes,val_oos_mean_score,proposed_action,status,reviewer,review_date
+ext_all_russian_scientific_research_institute_of_experimental_ph__pos,train,no_secure_perimeter_visible,"dense urban institute, no layered perimeter visible",,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_fuel_handling_plant__pos,train,no_secure_perimeter_visible,point in fields beside a city,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_heysham__pos,train,point_likely_offsite,point on shoreline south of the plant,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_htr_10_reactor__pos,train,no_secure_perimeter_visible,"campus setting, perimeter not identifiable",,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_institute_for_nuclear_energy_ifa_institute_for_energy_techno__pos,val,no_secure_perimeter_visible,suburban institute,0.5847366605367925,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_institute_of_physics_and_power_engineering_fei_ippe__pos,train,no_secure_perimeter_visible,town setting,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_ir_8__pos,train,no_secure_perimeter_visible,urban Moscow institute,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_kashiwazaki_kariwa__pos,train,point_likely_offsite,"point ~0.5-1 km off the plant, in forest between plant and town",,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_kurchatov_institute__pos,train,no_secure_perimeter_visible,urban Moscow institute,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_neptune_research_reactor_raynesway__pos,train,no_secure_perimeter_visible,ordinary business-park building,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_prr_pulsing_reactor__pos,train,no_secure_perimeter_visible,"rural village, no facility visible",,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_safari_1__pos,train,point_likely_offsite,point on a dirt road in scrub; facility at tile edge,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_shimane__pos,val,point_likely_offsite,point on a forest road south of the plant,0.9259874522686004,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21
+ext_yibin_fuel_fabrication__pos,train,no_secure_perimeter_visible,dense urban industrial blocks,,none: keep as labelled (coordinates and label unchanged),reviewed_confirmed_valid,Yanliang,2026-10-21

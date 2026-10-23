@@ -1,7 +1,7 @@
 """Label QA for the external positives and the provisional benchmark facility map. Reads only; changes no label.
 
     python label_qa.py positives   # external_imagery/dataset/label_qa/ (private: names, sheets, scores)
-    python label_qa.py benchmark   # outputs/qa/benchmark_facility_checks.csv + sheets under external_imagery/.../label_qa/
+    python label_qa.py benchmark   # results/qa/benchmark_facility_checks/benchmark_facility_checks.csv + sheets under external_imagery/.../label_qa/
 
 Positives (all 287, no sampling):
   * co-location: positive pairs closer than one tile width (1.9 km, tiles overlap) and < 0.5 km, overlap share,
@@ -31,7 +31,7 @@ sys.path.insert(0, str(PKG / "src"))
 from geometry import REPO_ROOT  # noqa: E402
 
 PRIV = REPO_ROOT / "external_imagery" / "dataset" / "label_qa"
-PUB = PKG / "outputs" / "qa"
+PUB = PKG.parent / "results" / "qa" / "benchmark_facility_checks"   # centroids CSV is git-ignored (coordinates)
 EXT_CACHE = PKG / "cache" / "external_decoded_1280px"
 BENCH_CACHE = PKG / "cache" / "decoded_1280px"
 RUNS = PKG / "outputs" / "ablation" / "runs"

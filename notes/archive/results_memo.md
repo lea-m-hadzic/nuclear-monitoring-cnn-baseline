@@ -2,6 +2,7 @@
 
 **Setup.** ResNet-50 is trained only on external layered-fence tiles and evaluated on Saratov, Natanz and Fordow; none of these three AOIs contributes training data.
 - **Shared design across conditions:** the same 287 positives and 157 negatives each (126 train / 31 val), and identical optimizer, loss, augmentations and stopping rule. Checkpoints are selected on one shared validation set (118 tiles).
+- **Input resolution:** every tile covers 1.9 km. Imagery is extracted at about 0.74 m/px (2560 px) and box-reduced 2x before training, so the **effective model input resolution is about 1.5 m/px** (1280 px). It is not described as "z16 imagery": training tiles come from zoom 16 or 17 sources depending on latitude, resampled to a common ground sample distance.
 - **Watermark handling:** a per-tile geometric watermark mask is filled before augmentation.
 - **Conditions:**
   - A: nearby negatives only.
@@ -44,7 +45,8 @@
 - **Three seeds is small.** Seed ranges are 0.09–0.10 in pooled tile AUROC and up to 0.27 SD in Saratov recall. I would make no significance claims, and describe A vs C as comparable on discrimination and different in where they find facilities.
 - **The tile label and facility credit can disagree.** On Saratov tiles A has the higher tile AUROC (0.77 vs 0.73), yet C has better facility recall. The tile label (`human_target`) and the footprint-based facility credit are measuring different things.
 - **The facility map is provisional.** Natanz and Fordow have one facility each. All conditions need 87–92% of the AOI reviewed to find every Saratov facility.
-- **Positives are not yet QA'd.** They are Yanliang-provided and fence-centred; checking their labels is a planned sensitivity analysis. The C_matched and unmasked runs have not been run.
+- **Positive-label QA (completed after these runs).** All 287 positives were reviewed visually. The 14 flagged ones were reviewed by Yanliang and confirmed valid, so no positive was changed (`outputs/qa/label_qa_report.md`). A targeted review of 41 negatives is with Yanliang. No negative label has been changed, and the effect of any contamination it finds is not yet known. The C_matched and unmasked runs are reported in `results_robustness/robustness_memo.md`.
+- **Finer resolution is untested.** All results are at about 1.5 m/px effective input. Whether finer input (for example native z17, about 0.6 m/px) would improve retrieval is unknown. A proposed optional sensitivity is specified but not run (`outputs/ablation/z17_sensitivity_spec.md`).
 
 ## Interpretation for the paper
 

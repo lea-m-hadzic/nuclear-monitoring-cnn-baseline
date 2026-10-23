@@ -26,7 +26,7 @@ sys.path.insert(0, str(HERE))
 from geometry import REPO_ROOT  # noqa: E402
 
 PKG = HERE.parent
-QA = PKG / "outputs" / "qa" / "positive_proposed_corrections.csv"
+QA = PKG.parent / "results" / "qa" / "positive_review" / "positive_proposed_corrections.csv"
 META = REPO_ROOT / "external_imagery" / "dataset" / "external_tiles_metadata_refined.csv"
 CACHE = PKG / "cache" / "external_decoded_1280px"
 OUT = REPO_ROOT / "external_imagery" / "dataset" / "review_packages" / "flagged_training_positives_14"

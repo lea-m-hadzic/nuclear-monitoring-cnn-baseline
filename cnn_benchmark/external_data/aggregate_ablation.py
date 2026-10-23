@@ -1,6 +1,6 @@
 """Aggregate the main ablation matrix (A/B/C x seeds 0-2) into paper tables and figures. Reads run outputs only.
 
-    python aggregate_ablation.py      # -> outputs/ablation/results/{*.csv, *.md, *.png}
+    python aggregate_ablation.py      # -> results/main/abc_tables/{*.csv, *.md, *.png}
 
 Tables (mean +/- sample std over seeds; per-seed values kept in the long CSVs):
   T1 checkpoint selection    best epoch, shared-val PR-AUC / AUROC / loss
@@ -37,7 +37,7 @@ from train_ablation import ablation_config, auroc, pr_auc  # noqa: E402
 
 AC = ablation_config()
 RUNS = PKG / AC["runs_dir"]
-OUT = PKG / "outputs" / "ablation" / "results"
+OUT = PKG.parent / "results" / "main" / "abc_tables"   # repo-level results/ (paper-facing); figures/ holds renamed copies
 CONDS, SEEDS, REGIONS = AC["conditions"], AC["seeds"], AC["evaluation"]["regions"]
 BUDGETS = [1, 2, 5, 10, 20, 30]
 COLORS = {"A": "#1f77b4", "B": "#d62728", "C": "#2ca02c", "random": "#7f7f7f"}

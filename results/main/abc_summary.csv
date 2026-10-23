@@ -1,0 +1,4 @@
+condition,n_seeds,backend,pooled_tile_auroc_mean,pooled_tile_auroc_sd,pooled_tile_pr_auc_mean,pooled_tile_pr_auc_sd,saratov_recall_at_20pct_mean,saratov_recall_at_20pct_sd,saratov_area_to_50pct_mean,saratov_area_to_50pct_sd,natanz_first_hit_pct_mean,natanz_first_hit_pct_sd,fordow_first_hit_pct_mean,fordow_first_hit_pct_sd
+A (nearby negatives),3,mps,0.7632,0.0573,0.2254,0.1261,0.3194,0.2646,33.5602,21.1879,0.149,0.0369,2.0857,1.3106
+B (hard negatives),3,mps,0.5453,0.0474,0.0563,0.008,0.1944,0.1577,41.2202,10.7663,42.5232,26.9623,16.4729,3.8458
+C (mixed negatives; main condition),3,mps,0.7449,0.047,0.2369,0.0338,0.5417,0.0417,18.5036,1.3287,1.7452,2.8016,2.7668,3.1522

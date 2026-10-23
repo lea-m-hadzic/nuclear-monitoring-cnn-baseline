@@ -1,6 +1,6 @@
 """Paper tables for the CNN robustness checks, built from raw per-run outputs only (frozen results are read, never written).
 
-    python robustness_tables.py     # -> outputs/ablation/results_robustness/paper_tables/
+    python robustness_tables.py     # -> results/robustness/paper_tables/
 
   table_nuisance_matching.{csv,md}   C [MPS, frozen] (reference) | C [CUDA control] | C_matched [CUDA]
   table_mask_robustness.{csv,md}     A mask on / off [MPS], C mask on / off [MPS]
@@ -18,7 +18,7 @@ import pandas as pd
 
 PKG = Path(__file__).resolve().parents[1]
 ABL = PKG / "outputs" / "ablation"
-OUT = ABL / "results_robustness" / "paper_tables"
+OUT = PKG.parent / "results" / "robustness" / "paper_tables"
 RUNS = {  # label -> (run directory, backend, mask)
     "A [MPS, mask on, frozen]": (ABL / "runs" / "A", "MPS", "on"),
     "A [MPS, mask off]": (ABL / "runs_robustness_mps" / "A_unmasked", "MPS", "off"),

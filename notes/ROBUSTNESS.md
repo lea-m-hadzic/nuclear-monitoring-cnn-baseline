@@ -1,25 +1,26 @@
-# CNN negative-composition ablation: definitive robustness record
+# CNN baseline: robustness record (definitive)
 
-**Status: complete and frozen (2026-10-21).** No further CNN experiments are planned unless a collaborator identifies a concrete label or data issue.
+**Status: complete and frozen.** Robustness runs were frozen on 2026-10-21; the Saratov auto_mosaic re-scoring (no retraining) was added on 2026-10-22. No further CNN experiments are planned.
 - No more backend controls, mask variants or nuisance-matching variants.
-- FULL_MIXED stays off.
-- z17 stays off unless explicitly approved.
+- FULL_MIXED stays off (`proposed/full_mixed_spec.md`, never run).
+- z17 / finer resolution: specified and frozen as a **proposed optional sensitivity, not run** (`proposed/z17_sensitivity_spec.md`).
+- The targeted negative-label review (41 tiles) is with Yanliang. No negative label has been changed. See `DATA_AND_LABEL_QA.md`.
 
 **Scope of the claims:**
 - Every condition has **n = 3 seeds** (0, 1, 2). Values are mean ± sample SD.
 - **No significance claims are made from n = 3.** Differences smaller than the seed spread are described as "within seed variability".
 - Facility-level broad-area-search metrics are primary. Tile AUROC and PR-AUC are secondary.
-- The facility map is provisional (`facility_mapping_questions.md`).
+- The facility map is provisional (`cnn_benchmark/outputs/facility_mapping_questions.md`).
 
-**Tables** (generated from raw per-run outputs by `external_data/robustness_tables.py`):
-- `paper_tables/table_nuisance_matching.md`
-- `paper_tables/table_mask_robustness.md`
-- `paper_tables/seed_level_metrics.csv`
+**Tables** (generated from raw per-run outputs by `cnn_benchmark/external_data/robustness_tables.py`):
+- `results/robustness/paper_tables/table_nuisance_matching.md`
+- `results/robustness/paper_tables/table_mask_robustness.md`
+- `results/robustness/paper_tables/seed_level_metrics.csv`
 
 ## 1. Main ablation (frozen; Apple MPS, M5 Max)
 
-- **Setup:** frozen at commit `8742c46` (`outputs/ablation/freeze.json`). ResNet-50 trained on external layered-fence tiles only; evaluated on Saratov, Natanz and Fordow, which never contribute training data. Same 287 positives and 157 negatives per condition (126 train / 31 val).
-- **Shared recipe:** geometric watermark mask; checkpoint selection on one shared validation set (118 tiles; up to 20 epochs, minimum 5, patience 5). Tables: `outputs/ablation/results/`.
+- **Setup:** frozen at commit `8742c46` (`cnn_benchmark/outputs/ablation/freeze.json`). ResNet-50 trained on external layered-fence tiles only; evaluated on Saratov, Natanz and Fordow, which never contribute training data. Same 287 positives and 157 negatives per condition (126 train / 31 val).
+- **Shared recipe:** geometric watermark mask; checkpoint selection on one shared validation set (118 tiles; up to 20 epochs, minimum 5, patience 5). Tables: `results/main/abc_tables/`; summary: `results/main/abc_summary.csv`.
 
 | Condition | Pooled tile AUROC | Pooled PR-AUC | Saratov recall @20% | Area to 50% Saratov recall | Natanz / Fordow first hit (% AOI) |
 |---|---|---|---|---|---|
@@ -33,7 +34,7 @@
 - B fails to transfer.
 - A finds the single Natanz plant faster (an AOI-specific reversal).
 
-**VLM comparison at the same operating point:** the VLM reaches 50% Saratov facility recall at **9.4%** of the AOI, against 18.5% for frozen C. The VLM remains more review-efficient on Saratov at that point (`outputs/evaluations/vlm_single_pass__footprint_parent/`).
+**VLM comparison at the same operating point:** the VLM reaches 50% Saratov facility recall at **9.4%** of the AOI, against 18.5% for frozen C. The VLM remains more review-efficient on Saratov at that point (`results/main/vlm_comparison.csv`; VLM evaluation in `cnn_benchmark/outputs/evaluations/vlm_single_pass__footprint_parent/`).
 
 **Caveat:** the shared validation set has C's nearby/hard mixture, so C's high validation score is distributionally favourable to C and is not independent evidence.
 
@@ -92,10 +93,10 @@ All mask-on vs mask-off differences are within seed variability. The A-vs-C inte
 - model, loss, optimizer, schedule, batch size, augmentations, data-loader workers, stopping rule and seeds.
 
 On CUDA, TF32 was explicitly disabled so the arithmetic stays fp32, as on MPS. Robustness outputs are kept by backend:
-- `outputs/ablation/runs_robustness_mps/`
-- `outputs/ablation/runs_robustness_cuda/`
+- `provenance/run_records/runs_robustness_mps/`
+- `provenance/run_records/runs_robustness_cuda/`
 
-The frozen `outputs/ablation/runs/` was never modified.
+The frozen main runs (`provenance/run_records/runs/`) were never modified. Checkpoints are not in this repo.
 
 ## 5. Technical failures and fixes
 
@@ -111,7 +112,29 @@ The frozen `outputs/ablation/runs/` was never modified.
      - A CUDA C control was added to interpret C_matched.
      - That control started each seed only after GPU 1 had been idle on two checks 10 minutes apart.
 
-## 6. Paper-ready text
+## 6. Saratov extraction-mode sensitivity (2026-10-22; re-scoring only, no retraining)
+
+**Why:** the extraction audit (`DATA_AND_LABEL_QA.md` §4) found that the frozen Saratov benchmark tiles are Qiqi's legacy z16 2×2 mosaics. Training, Natanz and Fordow use `auto_mosaic`. The geometry is equivalent; the pixels differ.
+
+**What:**
+- All 1,387 Saratov parent tiles were re-extracted with `--auto_mosaic --output_px 2560` at the frozen centres, into a fresh directory (0 failures). 839 tiles changed from z16 to z17 sources.
+- They went through the frozen cache preprocessing and the frozen geometric-mask rule (each tile's own mosaic geometry), and were scored with the 3 frozen C checkpoints.
+- **Check:** re-scoring the legacy cache with the same script reproduces the frozen scores to 1.1e-16.
+
+| C, 3 seeds | Legacy (frozen, reported) | auto_mosaic | Δ per seed |
+|---|---|---|---|
+| Saratov tile AUROC | 0.734 ± 0.048 | 0.721 ± 0.049 | −0.015 / −0.014 / −0.009 |
+| Facility recall @20% area | 0.54 ± 0.04 | 0.51 ± 0.06 | 0.00 / −0.125 / +0.04 |
+| Area to 50% recall (% AOI) | 18.5 ± 1.3 | 18.6 ± 4.1 | −1.2 / +4.7 / −3.4 |
+| Spearman legacy vs auto scores | | 0.95–0.97 | |
+
+**Pre-specified rule:** material only if recall@20% changes by ≥ 0.10 or the area to 50% changes by ≥ 5 pp, with the same direction in at least 2 of 3 seeds. **Not met.** The legacy result stays the reported benchmark because it is the imagery the VLM was scored on.
+
+Files: `results/robustness/saratov_auto_mosaic/` and `figures/fig_saratov_legacy_vs_auto_mosaic.png`. Script: `cnn_benchmark/external_data/saratov_auto_mosaic_rescore.py`.
+
+## 7. Paper-ready text
+
+**Input resolution.** All CNN results use 1.9 km tiles at an effective model input resolution of about 1.5 m/px. Imagery was extracted at about 0.74 m/px and box-reduced 2x to 1280 px. Performance at finer resolution has not been tested, and we make no claim about it.
 
 **Robustness to imagery masking.** We removed provider watermarks with a per-tile geometric mask. To check that the mask did not drive the results, we retrained A and C with the mask disabled, using the same backend (Apple MPS), recipe and seeds. Removing the mask did not materially change benchmark performance:
 - pooled tile AUROC 0.763 vs 0.762 for A, and 0.745 vs 0.715 for C;
@@ -125,3 +148,5 @@ All differences were within seed variability (n = 3). The A-vs-C comparison was 
 - review area to reach 50% Saratov recall 40.4% vs 20.4%.
 
 Both conditions were trained on the same CUDA backend (NVIDIA A100). The CUDA control rules out the compute backend as the explanation: C [CUDA] closely matched the frozen C [MPS] (pooled AUROC 0.744 vs 0.745; 50% Saratov recall at 20.4% vs 18.5% of the AOI). C_matched kept a high shared-validation PR-AUC (0.92) despite its poor benchmark transfer, so the in-distribution validation set did not reveal the problem. We do not establish why nuisance matching hurts. The result is consistent with matching removing useful contextual variation from the negatives, or inducing a less transferable decision rule. Natural nearby sampling, as in C, is therefore retained.
+
+**Saratov extraction mode.** The Saratov benchmark tiles were extracted with a legacy z16 2×2 mosaic, whereas training, Natanz and Fordow tiles used an adaptive-zoom mosaic, at equivalent footprint and resolution. Re-extracting all 1,387 Saratov tiles with the adaptive mosaic and re-scoring them with the frozen C checkpoints (no retraining) did not materially change facility-level performance: recall at 20% of the AOI 0.54 ± 0.04 vs 0.51 ± 0.06, and area to 50% recall 18.5 ± 1.3% vs 18.6 ± 4.1%, with tile rankings highly concordant (Spearman 0.95–0.97). We report the legacy Saratov results, which use the same imagery as the VLM baseline.
