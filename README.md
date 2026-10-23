@@ -75,16 +75,77 @@ For the single Natanz and Fordow facilities, both methods surface the plant with
 
 Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `results/robustness/` and `results/qa/`.
 
-## Repository map
+## Repository layout
 
-| Path | Contents |
-|---|---|
-| `results/` | All paper-facing tables; **`results/README.md` maps every file to the script that generated it** |
-| `figures/` | Paper-relevant figures, clearly named (index in `results/README.md`) |
-| `notes/` | `METHODOLOGY.md`, `ROBUSTNESS.md` (incl. paper-ready text), `DATA_AND_LABEL_QA.md`; `proposed/` (not run); `archive/` (superseded notes) |
-| `provenance/` | Origin, commits, the reorganisation record, and per-run records (configs, metrics, scores; no checkpoints) |
-| `cnn_benchmark/` | Code (`src/`, `external_data/`), configs, tests, and the pipeline inputs/intermediates in `outputs/` (parent table, facility map, manifests, freeze records, VLM evaluation). Code guide: `cnn_benchmark/README.md` |
-| `PRIVATE_DATA_NOTES.md` | What must not leave the collaborator group, and what is never in this repo |
+```
+.
+├── README.md                          overview, final setup, main results, VLM comparison, robustness/QA, status
+├── PRIVATE_DATA_NOTES.md              what must not leave the collaborator group; what is never committed
+│
+├── results/                           frozen paper-facing tables (index: results/README.md → generating script)
+│   ├── main/                          abc_summary.csv (headline A/B/C), facility_metrics.csv (per seed),
+│   │                                  vlm_comparison.csv, abc_tables/ (T1–T5, curves, long-format data)
+│   ├── robustness/                    paper_tables/, mps_mask_sensitivity/, cuda_matching_control/
+│   │                                  (backend control + nuisance matching), saratov_auto_mosaic/
+│   └── qa/                            positive_review/, negative_review/ (pending), benchmark_facility_checks/,
+│                                      extraction_audit/, artifact_audit/
+│
+├── figures/                           paper-relevant figures (PNG)
+│   ├── fig_abc_recall_vs_review_area.png            facility recall vs % AOI reviewed, A/B/C
+│   ├── fig_abc_per_facility_first_hit.png           per-facility first-hit area
+│   ├── fig_abc_tile_metrics.png                     tile AUROC / PR-AUC per AOI and seed
+│   ├── fig_abc_training_curves.png                  shared-validation training curves
+│   ├── fig_robustness_mask_recall_vs_review_area.png             mask on vs off
+│   ├── fig_robustness_nuisance_matching_recall_vs_review_area.png  C vs C_matched (CUDA)
+│   ├── fig_saratov_legacy_vs_auto_mosaic.png        Saratov extraction-mode sensitivity
+│   └── fig_vlm_saratov_recall_vs_review_area.png    VLM Saratov facility recall
+│
+├── notes/
+│   ├── METHODOLOGY.md                 baseline definition, data, model, evaluation rule, caveats
+│   ├── ROBUSTNESS.md                  definitive robustness record + paper-ready text
+│   ├── DATA_AND_LABEL_QA.md           positive/negative label QA, facility map, extraction audit, artefacts
+│   ├── proposed/                      z17 sensitivity spec (frozen, not run), FULL_MIXED spec (off)
+│   └── archive/                       superseded notes kept for provenance
+│
+├── provenance/
+│   ├── README.md                      origin, source commits, 2026-10-23 reorganisation, validation
+│   └── run_records/                   per-run configs, metrics, scores, logs (no checkpoints)
+│
+└── cnn_benchmark/                     code, configs, tests, pipeline inputs
+    ├── README.md                      code guide and original run commands
+    ├── src/                           benchmark infrastructure
+    │   ├── build_parent_table.py      canonical z16 parent-tile table and human_target labels
+    │   ├── facility_mapping.py        provisional benchmark facility map (+ open author questions)
+    │   ├── evaluation.py              facility recall vs review area (footprint rule), first hits, ties
+    │   ├── evaluate_scores.py         evaluate any score file (used for the VLM baseline)
+    │   ├── reproduce_manuscript.py    manuscript regression (rule A) + VLM baseline outputs
+    │   ├── manuscript_rule.py         the manuscript's own surfacing rule
+    │   ├── image_index.py             resolve benchmark tiles in the image cache; integrity report
+    │   ├── decoded_cache.py           pre-decoded 1280 px cache (exact 2× box reduction)
+    │   ├── artifact_audit.py          watermark / mosaic-seam audit by AOI
+    │   └── model.py, dataset.py,      ResNet-50 and generic training / scoring plumbing
+    │       train.py, predict.py, splits.py, throughput.py, common.py
+    ├── external_data/                 external training data + the A/B/C ablation
+    │   ├── train_ablation.py          train one condition × seed (frozen; do not re-run)
+    │   ├── evaluate_ablation.py       score the benchmark AOIs with a checkpoint
+    │   ├── aggregate_ablation.py      results/main/abc_tables/ (+ A/B/C figures)
+    │   ├── aggregate_robustness.py    results/robustness/{mps_mask_sensitivity,cuda_matching_control}/
+    │   ├── robustness_tables.py       results/robustness/paper_tables/
+    │   ├── paper_summary.py           results/main/{abc_summary,facility_metrics,vlm_comparison}.csv
+    │   ├── saratov_auto_mosaic_rescore.py   Saratov extraction-mode sensitivity (no retraining)
+    │   ├── extraction_audit.py        re-extraction / preprocessing audit
+    │   ├── label_qa.py                positive-label QA + benchmark facility checks
+    │   ├── review_package_flagged.py, review_package_negatives.py   review packages for Yanliang
+    │   ├── ablation_manifests.py, freeze_ablation.py, watermark_*.py   frozen inputs and mask
+    │   └── extract_*, hard_negative_*, negative_refinement.py, …        dataset construction
+    ├── configs/default.yaml           paths, geometry, AOI areas, defaults
+    ├── outputs/                       pipeline inputs/intermediates read by the code: parent table,
+    │                                  facility map, splits, VLM scores/evaluation, ablation manifests,
+    │                                  freeze records
+    └── tests/                         evaluation, facility map, parent table, cache, ablation, dataset tests
+```
+
+**Local only (git-ignored, never pushed):** `data/`, `NEW_natanz/` (benchmark imagery), `external_imagery/` (training imagery, coordinates, review packages), `cnn_benchmark/cache/` (decoded caches), `cnn_benchmark/outputs/ablation/runs*/` (checkpoints), the root workbook, manuscript and VLM result CSVs, `vendor/`, and `_local/` (migration manifests). See `PRIVATE_DATA_NOTES.md`.
 
 ## Tests
 
