@@ -20,9 +20,10 @@ Per-run inputs (training and evaluation): `external_data/train_ablation.py` and 
 | `paper_tables/` | Paper tables for mask sensitivity and nuisance matching, plus every run's metrics | `external_data/robustness_tables.py` |
 | `mps_mask_sensitivity/` | A and C with the watermark mask on (frozen) vs off, same backend (MPS) | `external_data/aggregate_robustness.py` |
 | `cuda_matching_control/` | **Backend control and nuisance matching:** C [CUDA] (reproduces the frozen MPS C) vs C_matched [CUDA] | `external_data/aggregate_robustness.py` |
+| `fullres_2560/` | **Input resolution:** C retrained at 2560 px (full ≈ 0.74 m/px) vs frozen C-1280, pre-registered; materially worse on all 3 seeds. Spec + freeze, memo, seed-level, summary, 1280-vs-2560 comparison, rank overlap, materiality | `external_data/fullres_2560_compare.py` (runs: `external_data/train_ablation.py --input-px 2560`) |
 | `saratov_auto_mosaic/` | Saratov re-extracted with auto_mosaic and re-scored with the frozen C checkpoints (no retraining): seed-level, summary, rank agreement, legacy-reproduction checks, auto_mosaic scores, report | `external_data/saratov_auto_mosaic_rescore.py` |
 
-Robustness run records: `../provenance/run_records/runs_robustness_{mps,cuda}/`. Narrative: `../notes/ROBUSTNESS.md`.
+Robustness run records: `../provenance/run_records/runs_robustness_{mps,cuda}/` and `../provenance/run_records/fullres_2560/`. Narrative: `../notes/ROBUSTNESS.md`.
 
 ## qa/
 
@@ -46,6 +47,7 @@ Narrative: `../notes/DATA_AND_LABEL_QA.md`.
 | `fig_abc_training_curves.png` | Shared-validation training curves | `aggregate_ablation.py` (`fig_training_curves.png`) |
 | `fig_robustness_mask_recall_vs_review_area.png` | Mask on vs off | `aggregate_robustness.py` (`mps_mask_sensitivity/fig_facility_recall_vs_budget.png`) |
 | `fig_robustness_nuisance_matching_recall_vs_review_area.png` | C [CUDA] vs C_matched [CUDA] | `aggregate_robustness.py` (`cuda_matching_control/fig_facility_recall_vs_budget.png`) |
+| `fig_robustness_fullres_2560_recall_vs_review_area.png` | Saratov facility recall vs review area, C-1280 vs C-2560, 3 seeds | `fullres_2560_compare.py` (`fullres_2560/fig_fullres_2560_recall_vs_review_area.png`) |
 | `fig_saratov_legacy_vs_auto_mosaic.png` | Saratov recall curves, legacy vs auto_mosaic imagery, 3 seeds | `saratov_auto_mosaic_rescore.py` |
 | `fig_vlm_saratov_recall_vs_review_area.png` | VLM Saratov facility recall vs review area | `src/reproduce_manuscript.py` (`outputs/vlm_facility_recall_vs_review_area.png`) |
 

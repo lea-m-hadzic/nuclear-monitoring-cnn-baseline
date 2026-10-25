@@ -135,7 +135,10 @@ def build() -> dict:
 class MaskBank:
     """tile key -> geometric mask (read from the built geometry table; masks rendered lazily and memoised)."""
 
-    def __init__(self, path: Path = OUT / "geometry.csv"):
+    def __init__(self, path: Path = OUT / "geometry.csv", n: int = CACHE_PX):
+        """`n` = rendered mask size; CACHE_PX (1280) for every frozen run. n=2560 renders the same rule (same physical
+        area) for the full-resolution sensitivity only."""
+        self.n = n
         g = pd.read_csv(path)
         self.geo = dict(zip(g.key, zip(g.grid.astype(int), g.crop_px.astype(float))))
         self.sha = dict(zip(g.key, g.mask_sha256))
@@ -145,7 +148,7 @@ class MaskBank:
     def get(self, key: str) -> np.ndarray:
         if key not in self.geo:
             raise KeyError(f"no mask geometry for tile {key!r}")
-        return geometry_mask(*self.geo[key])
+        return geometry_mask(*self.geo[key], getattr(self, "n", CACHE_PX))   # subclasses without __init__ -> 1280
 
 
 if __name__ == "__main__":

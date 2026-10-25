@@ -1,0 +1,33 @@
+{
+ "study": "C full-resolution 2560 px input sensitivity",
+ "frozen_at_utc": "2026-10-23T16:47:00Z",
+ "git_head": "e5ac22c0f2428225eeb278f1367fbd8aa9ff2bd8",
+ "uncommitted_code_note": "2560 code path added after HEAD; hashed here",
+ "batch_size": 4,
+ "batch_size_deviation": false,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "materiality": "material iff |d recall@20%| >= 0.10 OR |d area-to-50%| >= 5 pp, same direction in >= 2/3 seeds (per seed: 2560 - frozen 1280)",
+ "equivalence_check": "filled cache vs on-the-fly fill: 7/7 and 60/60 identical tensors",
+ "sha256": {
+  "spec": "bb7ba34e33315996261c2dd6ef7f358d2c29a5bf70500301a9950f74d862bc2f",
+  "train_ablation.py": "22d60d254237bc46120e6c1c1c1e0d96224f47d60f4ee2d43a3869e861bc51e7",
+  "evaluate_ablation.py": "161a95fbc2a9a89425732ce9d689cd47f9c0a2e26974690b8d5937b156bc5605",
+  "watermark_geometry.py": "fcce6d003ffbc00d441b23142380273bf767449b57929a2aabc58fcc397d382f",
+  "watermark_mask.py": "55d8adc5247c54d67473e40e6022f89a58802b44384df387537b1112e6244a77",
+  "fullres_cache.py": "9f2a61d1cbe915fcf6b75b03a293b3c5314d6d84c105538db14eea840c66201d",
+  "run_fullres_2560.sh": "241dbf719a7a9a3be1e7b93d60eea84000acf9eca02c645d98c6adfb0480e14a",
+  "freeze.json": "ffbb1a4c521ee07d572af82252c3eb1bd19cf00a44f8fb177a3ab4d266cb11b0",
+  "manifest_C": "fe5b7a2cbf74e72a1724623806baf3b3a3cf73821f3acd7c020c2987cb78ce04",
+  "shared_val": "ade287782b7010f97ded78558422de638ddf58f2c544b218e1ebcd9b777d23f9",
+  "ablation_config.yaml": "9a041192c2398a54e96f1a2c30a2269ec32002b7b9abc1647597252565600028",
+  "default.yaml": "f10ad555993a035f38028cef57fbadaab650e482948e11f1a8180391630460b1",
+  "external_2560_manifest": "867744c26aa86f098b3b628656a0089a923aeec38534b98508b5414c4a8b4032",
+  "external_2560_filled_manifest": "10940e617526b3c7c55cd61a2cdc29037d1d0711027275cb747d47634c5d9427",
+  "benchmark_2560_manifest": "6092985c930611cb7394502da10bee61b52f46899e4501b6c34ab167c205bf3e",
+  "benchmark_2560_filled_manifest": "1c172b4cb0920957d23be482848609bf5e7af23795893396da0046594677a82c"
+ }
+}

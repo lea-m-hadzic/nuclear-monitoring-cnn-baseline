@@ -1,9 +1,10 @@
 # CNN baseline: robustness record (definitive)
 
-**Status: complete and frozen.** Robustness runs were frozen on 2026-10-21; the Saratov auto_mosaic re-scoring (no retraining) was added on 2026-10-22. No further CNN experiments are planned.
+**Status: complete and frozen.** Robustness runs were frozen on 2026-10-21. The Saratov auto_mosaic re-scoring (no retraining) was added on 2026-10-22. The pre-registered 2560 px input sensitivity (§7, run 2026-10-23 to 25) is the **last CNN robustness result**. No further CNN experiments will be run.
 - No more backend controls, mask variants or nuisance-matching variants.
 - FULL_MIXED stays off (`proposed/full_mixed_spec.md`, never run).
-- z17 / finer resolution: specified and frozen as a **proposed optional sensitivity, not run** (`proposed/z17_sensitivity_spec.md`).
+- Full-resolution input (2560 px from the same imagery): **run and reported** (§7).
+- z17 re-extraction: specified and frozen as a **proposed optional sensitivity, not run** (`proposed/z17_sensitivity_spec.md`).
 - The targeted negative-label review (41 tiles) is with Yanliang. No negative label has been changed. See `DATA_AND_LABEL_QA.md`.
 
 **Scope of the claims:**
@@ -82,10 +83,13 @@ All mask-on vs mask-off differences are within seed variability. The A-vs-C inte
 | A, C mask off | 6 | Apple MPS (M5 Max), fp32 | `ee7e38b` (A seed 0); `83b43d7` (others)¹ |
 | C [CUDA control] | 3 | CUDA, NVIDIA A100 80GB PCIe (bend GPU 1), fp32, TF32 off | `ee7e38b` |
 | C_matched [CUDA] | 3 | CUDA, NVIDIA A100 80GB PCIe (bend GPU 1), fp32, TF32 off | `be0d861` (seed 0)²; `804329f` (seeds 1–2) |
+| C at 2560 px input (§7) | 3 | Apple MPS (M5 Max), fp32 | `e5ac22c` + the uncommitted 2560 code diff (SHA-256 `4ac43589…`), committed unchanged with this result³ |
 
 ¹ Commit `83b43d7` only added the aggregation script during the run chain; the training code is identical to `ee7e38b`.
 
 ² Trained at `be0d861`. Its evaluation was re-run at `804329f` (see section 5).
+
+³ Each run records the launch diff hash in `run_config.json` (`git_at_launch`). The committed code reproduces that hash. Run records: `provenance/run_records/fullres_2560/`.
 
 **Held fixed across all of these** (verified against `freeze.json` / `freeze_robustness.json` before every run):
 - manifests and the shared validation set;
@@ -132,9 +136,41 @@ The frozen main runs (`provenance/run_records/runs/`) were never modified. Check
 
 Files: `results/robustness/saratov_auto_mosaic/` and `figures/fig_saratov_legacy_vs_auto_mosaic.png`. Script: `cnn_benchmark/external_data/saratov_auto_mosaic_rescore.py`.
 
-## 7. Paper-ready text
+## 7. Full-resolution (2560 px) input sensitivity (2026-10-23 to 25; pre-registered, C only)
 
-**Input resolution.** All CNN results use 1.9 km tiles at an effective model input resolution of about 1.5 m/px. Imagery was extracted at about 0.74 m/px and box-reduced 2x to 1280 px. Performance at finer resolution has not been tested, and we make no claim about it.
+**Why:** every frozen CNN result uses the 2560 px extractions box-reduced 2× to 1280 px, an effective ≈ 1.48 m/px. This test asks whether the full ≈ 0.74 m/px input improves broad-area retrieval.
+
+**What:**
+- Condition C, seeds 0–2, retrained with **only the input resolution changed**. The watermark-mask fill was scaled to the same physical size (σ 12 px).
+- The same PNGs were used, with no new extraction and no z17. Their 2× reduction reproduces the frozen 1280 cache for every tile.
+- Everything else matched frozen C-1280: recipe, batch 4, stopping rule, backend and evaluation.
+- The spec and materiality rule were frozen before training: `results/robustness/fullres_2560/FULLRES_2560_SPEC.md` and `fullres_2560_prereg_freeze.json`.
+
+| C, 3 seeds | 1280 (frozen, reported) | 2560 | Δ per seed |
+|---|---|---|---|
+| Pooled tile AUROC | 0.745 ± 0.047 | 0.678 ± 0.067 | −0.05 / −0.16 / +0.01 |
+| Facility recall @20% area | 0.54 ± 0.04 | 0.18 ± 0.12 | −0.46 / −0.33 / −0.29 |
+| Area to 50% recall (% AOI) | 18.5 ± 1.3 | 39.2 ± 5.6 | +24.9 / +24.2 / +12.9 |
+| Shared-val PR-AUC (best epoch) | 0.939 ± 0.023 | 0.908 ± 0.020 | |
+| Spearman 1280 vs 2560 scores (all tiles) | | 0.39–0.49 | |
+
+**Pre-specified rule:** material if recall@20% changes by ≥ 0.10 or the area to 50% changes by ≥ 5 pp, in the same direction in at least 2 of 3 seeds. **Met on both criteria, in all 3 seeds, in the worse direction.**
+- At 2560, Saratov recall at 20% of the AOI is at or below random ordering.
+- Natanz and Fordow tile AUROC also fall in 2 of 3 seeds, so the effect is not specific to the Saratov imagery.
+- Following the spec, **the frozen 1280 baseline is kept** and nothing was tuned on these results.
+- Shared-validation fit is also weaker at 2560. The larger input may be harder to fit under the fixed recipe and data size, but this was not tested.
+
+**Seed 2:** the first attempt was killed after 12 epochs when its controlling session ended. It is kept as provenance only, marked excluded (`provenance/run_records/fullres_2560/excluded_interrupted_seed2/`). The reported seed 2 is a from-scratch restart with the identical recipe.
+
+Files:
+- `results/robustness/fullres_2560/` (memo `FULLRES_2560_MEMO.md`, seed-level, summary, comparison, rank-overlap and materiality tables);
+- `figures/fig_robustness_fullres_2560_recall_vs_review_area.png`.
+
+Script: `cnn_benchmark/external_data/fullres_2560_compare.py`.
+
+## 8. Paper-ready text
+
+**Input resolution.** All CNN results use 1.9 km tiles at an effective model input resolution of about 1.5 m/px. Imagery was extracted at about 0.74 m/px and box-reduced 2x to 1280 px. Increasing the CNN input resolution from 1280 to 2560 pixels, while holding the training protocol fixed, materially degraded broad-area retrieval across all three seeds (Saratov facility recall at 20% of the AOI reviewed 0.54 ± 0.04 vs 0.18 ± 0.12; review area to reach 50% recall 18.5 ± 1.3% vs 39.2 ± 5.6%). We therefore report the 1280 px baseline.
 
 **Robustness to imagery masking.** We removed provider watermarks with a per-tile geometric mask. To check that the mask did not drive the results, we retrained A and C with the mask disabled, using the same backend (Apple MPS), recipe and seeds. Removing the mask did not materially change benchmark performance:
 - pooled tile AUROC 0.763 vs 0.762 for A, and 0.745 vs 0.715 for C;

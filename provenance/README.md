@@ -93,3 +93,12 @@ Files were moved with `git mv`, so history follows them. **Moved result files ar
 - **Tests:** from `cnn_benchmark/` with the private root source data linked temporarily (not copied): **80 passed, 33 skipped, 0 failed**.
 - **Frozen summaries:** in a scratch copy with `provenance/run_records/*` copied to `cnn_benchmark/outputs/ablation/runs*`, `aggregate_ablation.py`, `aggregate_robustness.py`, `robustness_tables.py` and `paper_summary.py` regenerate every committed results CSV, MD and JSON byte-identically (69 files).
 - **Saratov legacy re-scoring:** the frozen C checkpoints re-score the legacy Saratov cache to the committed frozen scores with max |diff| 1.1e-16 for each seed (1,387 tiles).
+
+## 2026-10-25: full-resolution (2560 px) input sensitivity (last CNN robustness result)
+
+- **Run records:** `run_records/fullres_2560/`, copied from the git-ignored `cnn_benchmark/outputs/ablation/runs_fullres_2560/` **without `best.pt`**. Each seed's `checksums.sha256` lists the SHA-256 of every original file, including the local checkpoint.
+- **Reported runs:** `C/seed0`, `C/seed1` and `C/seed2`. Seed 2 is the from-scratch restart of 2026-10-25.
+- **Excluded:** `excluded_interrupted_seed2/` holds the first seed-2 attempt, killed after 12 epochs. It is provenance only and not used in any result; see `EXCLUDED_FROM_ANALYSIS.md` there.
+- **Code:** launched at `e5ac22c` plus an uncommitted diff to `train_ablation.py`, `evaluate_ablation.py`, `watermark_geometry.py` and `watermark_mask.py`. The diff is recorded by hash in each `run_config.json` and committed unchanged with these records. Defaults are unchanged, and the frozen 1280 path re-scores frozen C seed 0 to 9.7e-17.
+- **Regenerating:** `fullres_2560_compare.py` reads these provenance copies and reproduces the CSVs in `results/robustness/fullres_2560/` byte-identically.
+- **Frozen 1280 records:** `run_records/runs/` was not modified.

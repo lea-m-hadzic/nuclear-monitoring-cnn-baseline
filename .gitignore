@@ -49,3 +49,8 @@ cnn_benchmark/outputs/**/*.log
 cnn_benchmark/outputs/external_data/*.csv
 # pre-reorganisation output location (superseded mixed-backend tables, stdout logs); current results live in results/
 cnn_benchmark/outputs/ablation/results_robustness/
+
+# model checkpoints anywhere (run records under provenance/ keep only their SHA-256 in checksums.sha256)
+*.pt
+*.pth
+*.ckpt

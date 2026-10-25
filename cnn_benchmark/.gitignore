@@ -37,4 +37,5 @@ external_data/*.csv
 
 # ResNet ablation: checkpoints, run outputs and dry runs (manifests + checks stay trackable)
 outputs/ablation/runs/
+outputs/ablation/runs_*/
 outputs/ablation/_DRY_RUN_ONLY/

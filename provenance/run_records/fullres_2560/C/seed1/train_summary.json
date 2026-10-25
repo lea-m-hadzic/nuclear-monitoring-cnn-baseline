@@ -1,0 +1,8 @@
+{
+ "best_epoch": 10,
+ "best_shared_val_pr_auc": 0.9044711237675201,
+ "best_shared_val_auroc": 0.8966013824884793,
+ "best_shared_val_loss": 0.49274388366078925,
+ "epochs_run": 16,
+ "run_label": "fullres_2560"
+}

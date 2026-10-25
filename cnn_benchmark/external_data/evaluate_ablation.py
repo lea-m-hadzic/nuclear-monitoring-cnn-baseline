@@ -31,7 +31,7 @@ import facility_mapping as fm  # noqa: E402
 from common import OUTPUT_DIR, load_config  # noqa: E402
 from evaluation import evaluate_parent_scores  # noqa: E402
 from model import build_model, pick_device  # noqa: E402
-from train_ablation import NpyTileDataset, ablation_config, auroc, pr_auc  # noqa: E402,F401
+from train_ablation import FULLRES, NpyTileDataset, ablation_config, auroc, pr_auc  # noqa: E402,F401
 from watermark_geometry import MaskBank  # noqa: E402
 
 
@@ -44,14 +44,15 @@ def score_benchmark(run: Path, max_tiles: int | None, device_name: str) -> pd.Da
     meta = ck["meta"]
     mask = None
     if meta.get("watermark_mask") == "geometric":           # same template, geometry table and fill as training
-        mask = MaskBank(PKG / ac["data"]["mask_geometry"])
+        mask = MaskBank(PKG / ac["data"]["mask_geometry"], n=meta.get("input_px", 1280))
         if (mask.template_sha256, mask.table_sha256) != (meta["watermark_template_sha256"], meta["watermark_geometry_sha256"]):
             raise SystemExit("watermark template / geometry table differ from the ones used in training")
     elif meta.get("watermark_mask") != "none":
         raise SystemExit("checkpoint has no geometric-mask provenance (old fixed-mask run?)")
     pt = pd.read_csv(OUTPUT_DIR / "parent_tiles.csv")
     pt = pt[pt.region.isin(ac["evaluation"]["regions"])].reset_index(drop=True)
-    cache = PKG / ac["data"]["benchmark_cache"]
+    fr = FULLRES.get(meta.get("input_px", 1280))
+    cache = PKG / (fr["benchmark_cache"] if fr else ac["data"]["benchmark_cache"])
     ids = pt.region + "__" + pt.tile_id
     missing = [i for i in ids if not (cache / f"{i}.npy").is_file()]
     if missing:
@@ -62,7 +63,10 @@ def score_benchmark(run: Path, max_tiles: int | None, device_name: str) -> pd.Da
     model = build_model(pretrained=False).to(device)
     model.load_state_dict(ck["model"])
     model.eval()
-    dl = DataLoader(NpyTileDataset(ids, pt[ac["evaluation"]["tile_label"]].fillna(0), cache, mask, train=False),
+    if meta.get("mask_prefilled_in_cache"):                  # fullres: same geometric fill, precomputed in the cache
+        mask = None
+    dl = DataLoader(NpyTileDataset(ids, pt[ac["evaluation"]["tile_label"]].fillna(0), cache, mask, train=False,
+                                   size=meta.get("input_px", 1280), fill_sigma=meta.get("mask_fill_sigma_px", 6.0)),
                     batch_size=load_config()["training"]["batch_size"])
     scores = []
     with torch.no_grad():

@@ -71,6 +71,7 @@ For the single Natanz and Fordow facilities, both methods surface the plant with
 | Positive-label QA | Are the 287 external positives valid? | All reviewed; 14 flagged, **all 14 confirmed valid by Yanliang**; nothing changed | **No** |
 | Negative-label QA | Could negatives contain layered fences? | Targeted 41-tile review (metadata heuristics, no model scores) sent to Yanliang; **pending; no label changed** | Not yet known |
 | Extraction audit | Were the inputs produced consistently? | Training, Natanz and Fordow re-extract byte-identically. Saratov uses legacy z16 2×2 mosaics (same geometry, different pixels). Model input ≈ 1.48 m/px | **No.** Disclosed |
+| Full-resolution input (2560 px) | Does the full ≈ 0.74 m/px input help? | Pre-registered, C only, everything else fixed: **materially worse in all 3 seeds** (recall @20% 0.54 → 0.18; area to 50% 18.5 → 39.2%) | **No.** 1280 baseline kept |
 | Saratov auto_mosaic sensitivity | Does the Saratov extraction mode matter? | Re-scored with frozen C checkpoints (no retraining): recall @20% 0.54 → 0.51, area to 50% 18.5 → 18.6%; Spearman 0.95–0.97. Below the pre-set materiality rule | **No** |
 
 Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `results/robustness/` and `results/qa/`.
@@ -86,7 +87,8 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 │   ├── main/                          abc_summary.csv (headline A/B/C), facility_metrics.csv (per seed),
 │   │                                  vlm_comparison.csv, abc_tables/ (T1–T5, curves, long-format data)
 │   ├── robustness/                    paper_tables/, mps_mask_sensitivity/, cuda_matching_control/
-│   │                                  (backend control + nuisance matching), saratov_auto_mosaic/
+│   │                                  (backend control + nuisance matching), saratov_auto_mosaic/,
+│   │                                  fullres_2560/ (2560 px input sensitivity)
 │   └── qa/                            positive_review/, negative_review/ (pending), benchmark_facility_checks/,
 │                                      extraction_audit/, artifact_audit/
 │
@@ -97,6 +99,7 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 │   ├── fig_abc_training_curves.png                  shared-validation training curves
 │   ├── fig_robustness_mask_recall_vs_review_area.png             mask on vs off
 │   ├── fig_robustness_nuisance_matching_recall_vs_review_area.png  C vs C_matched (CUDA)
+│   ├── fig_robustness_fullres_2560_recall_vs_review_area.png   C-1280 vs C-2560
 │   ├── fig_saratov_legacy_vs_auto_mosaic.png        Saratov extraction-mode sensitivity
 │   └── fig_vlm_saratov_recall_vs_review_area.png    VLM Saratov facility recall
 │
@@ -104,12 +107,13 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 │   ├── METHODOLOGY.md                 baseline definition, data, model, evaluation rule, caveats
 │   ├── ROBUSTNESS.md                  definitive robustness record + paper-ready text
 │   ├── DATA_AND_LABEL_QA.md           positive/negative label QA, facility map, extraction audit, artefacts
-│   ├── proposed/                      z17 sensitivity spec (frozen, not run), FULL_MIXED spec (off)
+│   ├── proposed/                      z17 re-extraction spec (frozen, not run), FULL_MIXED spec (off)
 │   └── archive/                       superseded notes kept for provenance
 │
 ├── provenance/
 │   ├── README.md                      origin, source commits, 2026-10-23 reorganisation, validation
-│   └── run_records/                   per-run configs, metrics, scores, logs (no checkpoints)
+│   └── run_records/                   per-run configs, metrics, scores, logs (no checkpoints);
+│                                      runs/, runs_robustness_{mps,cuda}/, fullres_2560/
 │
 └── cnn_benchmark/                     code, configs, tests, pipeline inputs
     ├── README.md                      code guide and original run commands
@@ -133,6 +137,7 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
     │   ├── robustness_tables.py       results/robustness/paper_tables/
     │   ├── paper_summary.py           results/main/{abc_summary,facility_metrics,vlm_comparison}.csv
     │   ├── saratov_auto_mosaic_rescore.py   Saratov extraction-mode sensitivity (no retraining)
+│   ├── fullres_cache.py, fullres_2560_compare.py, run_fullres_2560*.sh   2560 px input sensitivity
     │   ├── extraction_audit.py        re-extraction / preprocessing audit
     │   ├── label_qa.py                positive-label QA + benchmark facility checks
     │   ├── review_package_flagged.py, review_package_negatives.py   review packages for Yanliang

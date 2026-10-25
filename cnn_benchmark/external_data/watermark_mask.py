@@ -67,11 +67,12 @@ def load_mask() -> tuple[np.ndarray, str]:
     return m, sha
 
 
-def fill_rgb(arr: np.ndarray, mask: np.ndarray) -> np.ndarray:
-    """artifact_audit.fill_masked applied per channel; uint8 in, uint8 out."""
+def fill_rgb(arr: np.ndarray, mask: np.ndarray, sigma: float = 6.0) -> np.ndarray:
+    """artifact_audit.fill_masked applied per channel; uint8 in, uint8 out. sigma 6 px at 1280 (every frozen run);
+    the 2560 full-resolution sensitivity passes 12 px = the same physical smoothing."""
     out = np.empty_like(arr)
     for c in range(arr.shape[2]):
-        out[..., c] = np.clip(np.rint(aa.fill_masked(arr[..., c].astype(np.float32), mask)), 0, 255).astype(np.uint8)
+        out[..., c] = np.clip(np.rint(aa.fill_masked(arr[..., c].astype(np.float32), mask, sigma)), 0, 255).astype(np.uint8)
     return out
 
 
