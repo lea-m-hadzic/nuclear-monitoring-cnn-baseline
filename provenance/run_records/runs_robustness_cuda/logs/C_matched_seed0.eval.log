@@ -1,6 +1,0 @@
-{
- "pooled_tile_auroc": 0.6973553897294594,
- "pooled_tile_pr_auc": 0.1454356186066841,
- "mean_tile_auroc": 0.6064206543339749,
- "mean_tile_pr_auc": 0.13936829681802199
-}

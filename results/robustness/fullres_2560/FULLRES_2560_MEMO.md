@@ -65,9 +65,9 @@ Testing any of these would need new runs, which the spec doesn't include. No fur
 ## Run record and deviations
 
 - **Configuration:** all three runs used condition C (same manifest, SHA fe5b7a2c…), 357 train / 118 shared-val tiles, batch 4, AdamW 1e-4, wd 1e-4, Apple MPS. The only recorded difference from frozen C is `input_size` 2560, plus the mask fill σ 12 px as pre-registered.
-- **Seed 2 interruption.** The first seed-2 run was killed after 12 epochs when the controlling session ended (no summary written). It is kept as provenance only, marked excluded from analysis, in `provenance/run_records/fullres_2560/excluded_interrupted_seed2/`. Seed 2 was restarted **from scratch with the identical recipe** on 2026-10-25 03:45 UTC. The reported seed 2 is the restarted run. The interrupted run was not evaluated.
+- **Seed 2 interruption.** The first seed-2 run was killed after 12 epochs when the controlling session ended (no summary written). It was not evaluated and is not kept in this repo. Seed 2 was restarted **from scratch with the identical recipe** on 2026-10-25 03:45 UTC. The reported seed 2 is the restarted run. The interrupted run was not evaluated.
 - **Compute contention.** Seed 2 shared the machine with other jobs. This affects wall-clock only, not the recipe or the data order.
-- **Facility results were not inspected between seeds.** All evaluation ran after all three seeds finished training (`logs/progress.log`).
+- **Facility results were not inspected between seeds.** All evaluation ran after all three seeds finished training.
 - **Frozen 1280 outputs unchanged:** `provenance/run_records/runs/C/` was read only.
 - **Area to 25% recall** is not among the evaluator's stored recall targets. It is read off the same facility curve, and the script checks that this reading reproduces the evaluator's stored 50/75/90% values exactly.
 

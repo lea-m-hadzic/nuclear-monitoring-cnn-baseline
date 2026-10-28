@@ -1,6 +1,6 @@
 # Methodology: CNN baseline
 
-This consolidates the former root `METHODOLOGY.md`, the design sections of `cnn_benchmark/README.md`, and the caveats from the main results memo (`archive/results_memo.md`). Numbers and robustness checks are in `ROBUSTNESS.md`; data and label checks in `DATA_AND_LABEL_QA.md`.
+Numbers and robustness checks are in `ROBUSTNESS.md`; data and label checks in `DATA_AND_LABEL_QA.md`.
 
 ## 1. What the baseline is
 
@@ -71,6 +71,6 @@ Robustness variants are C_matched (nuisance-matched nearby half) and A/C with th
   - the reported Saratov tiles are Qiqi's legacy z16 2×2 mosaics, the same imagery the VLM saw;
   - training, Natanz and Fordow use auto_mosaic;
   - the auto_mosaic re-scoring showed no material change (`ROBUSTNESS.md` §6).
-- **Resolution:** all results are at about 1.5 m/px effective input. Finer resolution is untested; the proposed sensitivity is in `proposed/z17_sensitivity_spec.md`.
+- **Resolution:** all reported results use about 1.5 m/px effective input (1280 px). Doubling the input to 2560 px with the protocol fixed materially degraded retrieval on all three seeds (`ROBUSTNESS.md` §7).
 - **The human benchmark labels are not independent of the VLM,** because they were made while reviewing VLM outputs. Always state the labels used next to any comparison.
 - **The CNN is supervised; the VLM is zero-shot.**

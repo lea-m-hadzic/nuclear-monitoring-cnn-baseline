@@ -33,7 +33,7 @@ results/**/*.png
 !results/qa/artifact_audit/*.png
 results/**/_runs_view/
 results/**/*.log
-# coordinate-bearing QA / audit outputs (local only; see PRIVATE_DATA_NOTES.md)
+# coordinate-bearing QA / audit outputs (local only)
 results/qa/benchmark_facility_checks/benchmark_facility_centroids.csv
 results/qa/extraction_audit/extraction_audit_table.csv
 results/robustness/saratov_auto_mosaic/extraction_summary.csv

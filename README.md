@@ -1,8 +1,6 @@
 ## CNN baseline for *Catching Proliferation at the Fence*
 
-This is an internal research-results repository. 
-
-**Private:** see `PRIVATE_DATA_NOTES.md` before sharing anything.
+Internal research-results repository.
 
 ### What this baseline tests
 
@@ -81,7 +79,6 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 ```
 .
 ├── README.md                          overview, final setup, main results, VLM comparison, robustness/QA, status
-├── PRIVATE_DATA_NOTES.md              what must not leave the collaborator group; what is never committed
 │
 ├── results/                           frozen paper-facing tables (index: results/README.md → generating script)
 │   ├── main/                          abc_summary.csv (headline A/B/C), facility_metrics.csv (per seed),
@@ -106,13 +103,11 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 ├── notes/
 │   ├── METHODOLOGY.md                 baseline definition, data, model, evaluation rule, caveats
 │   ├── ROBUSTNESS.md                  definitive robustness record + paper-ready text
-│   ├── DATA_AND_LABEL_QA.md           positive/negative label QA, facility map, extraction audit, artefacts
-│   ├── proposed/                      z17 re-extraction spec (frozen, not run), FULL_MIXED spec (off)
-│   └── archive/                       superseded notes kept for provenance
+│   └── DATA_AND_LABEL_QA.md           positive/negative label QA, facility map, extraction audit, artefacts
 │
 ├── provenance/
-│   ├── README.md                      origin, source commits, 2026-10-23 reorganisation, validation
-│   └── run_records/                   per-run configs, metrics, scores, logs (no checkpoints);
+│   └── run_records/                   final per-seed run records behind the reported results: config,
+│                                      metrics, benchmark scores/curves, val predictions (no checkpoints);
 │                                      runs/, runs_robustness_{mps,cuda}/, fullres_2560/
 │
 └── cnn_benchmark/                     code, configs, tests, pipeline inputs
@@ -156,4 +151,4 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 
 From `cnn_benchmark/`, run `python -m pytest -q`.
 - Tests that need the private workbook or imagery are skipped or fail without them.
-- With the private root source data present: see the latest result in `provenance/README.md`.
+- With the private root source data present: 113 passed (2026-10-25).

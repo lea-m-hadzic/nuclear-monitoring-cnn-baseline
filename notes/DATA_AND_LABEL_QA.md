@@ -18,7 +18,7 @@ One place for every data and label check done on the CNN baseline. The detailed 
 - **Out-of-sample check:** 3 of 56 val positives average below 0.5 over the 9 frozen runs (Plant 272, RWTDF, Maišiagala). All three were graded plausible; they are small, low-contrast sites.
 - **Co-location:** 36 positive pairs overlap (< 1.9 km), all within one split group, so there is no leakage.
 
-Records: `results/qa/positive_review/label_qa_report.md` and `positive_proposed_corrections.csv`. Script: `cnn_benchmark/external_data/label_qa.py`. The private per-positive sheets are local only (see `PRIVATE_DATA_NOTES.md`).
+Records: `results/qa/positive_review/label_qa_report.md` and `positive_proposed_corrections.csv`. Script: `cnn_benchmark/external_data/label_qa.py`. The per-positive sheets are local only.
 
 ## 2. Negative labels: TARGETED REVIEW PENDING (no label changed)
 
@@ -70,4 +70,4 @@ Record: `results/qa/extraction_audit/extraction_audit_note.md`. Script: `cnn_ben
 - **Watermarks and mosaic seams differ by AOI** and are strongly AOI-identifying (AUC up to 1.0). This motivated the per-tile geometric watermark mask used in all frozen runs. The mask-off robustness runs (`ROBUSTNESS.md` §2) showed no material effect.
   - Record: `results/qa/artifact_audit/`. Script: `cnn_benchmark/src/artifact_audit.py`.
 - **Image integrity:** all 2,940 benchmark parent tiles resolve to 2560×2560 RGB PNGs at 1.9 km. Natanz uses Qiqi's complete 776-tile re-upload.
-  - Record: `cnn_benchmark/outputs/image_integrity_report.md`. Earlier notes are in `notes/archive/`.
+  - Record: `cnn_benchmark/outputs/image_integrity_report.md`.

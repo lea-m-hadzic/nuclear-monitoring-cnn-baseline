@@ -2,9 +2,9 @@
 
 **Status: complete and frozen.** Robustness runs were frozen on 2026-10-21. The Saratov auto_mosaic re-scoring (no retraining) was added on 2026-10-22. The pre-registered 2560 px input sensitivity (§7, run 2026-10-23 to 25) is the **last CNN robustness result**. No further CNN experiments will be run.
 - No more backend controls, mask variants or nuisance-matching variants.
-- FULL_MIXED stays off (`proposed/full_mixed_spec.md`, never run).
+- FULL_MIXED was not run.
 - Full-resolution input (2560 px from the same imagery): **run and reported** (§7).
-- z17 re-extraction: specified and frozen as a **proposed optional sensitivity, not run** (`proposed/z17_sensitivity_spec.md`).
+- z17 re-extraction was not run.
 - The targeted negative-label review (41 tiles) is with Yanliang. No negative label has been changed. See `DATA_AND_LABEL_QA.md`.
 
 **Scope of the claims:**
@@ -160,7 +160,7 @@ Files: `results/robustness/saratov_auto_mosaic/` and `figures/fig_saratov_legacy
 - Following the spec, **the frozen 1280 baseline is kept** and nothing was tuned on these results.
 - Shared-validation fit is also weaker at 2560. The larger input may be harder to fit under the fixed recipe and data size, but this was not tested.
 
-**Seed 2:** the first attempt was killed after 12 epochs when its controlling session ended. It is kept as provenance only, marked excluded (`provenance/run_records/fullres_2560/excluded_interrupted_seed2/`). The reported seed 2 is a from-scratch restart with the identical recipe.
+**Seed 2:** the first attempt was killed after 12 epochs when its controlling session ended. It was not evaluated and is not kept in this repo. The reported seed 2 is a from-scratch restart with the identical recipe.
 
 Files:
 - `results/robustness/fullres_2560/` (memo `FULLRES_2560_MEMO.md`, seed-level, summary, comparison, rank-overlap and materiality tables);
