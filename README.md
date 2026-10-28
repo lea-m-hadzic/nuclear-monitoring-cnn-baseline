@@ -132,7 +132,8 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
     │   ├── robustness_tables.py       results/robustness/paper_tables/
     │   ├── paper_summary.py           results/main/{abc_summary,facility_metrics,vlm_comparison}.csv
     │   ├── saratov_auto_mosaic_rescore.py   Saratov extraction-mode sensitivity (no retraining)
-│   ├── fullres_cache.py, fullres_2560_compare.py, run_fullres_2560*.sh   2560 px input sensitivity
+    │
+    ├── fullres_cache.py, fullres_2560_compare.py, run_fullres_2560*.sh   2560 px input sensitivity
     │   ├── extraction_audit.py        re-extraction / preprocessing audit
     │   ├── label_qa.py                positive-label QA + benchmark facility checks
     │   ├── review_package_flagged.py, review_package_negatives.py   review packages for Yanliang
