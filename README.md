@@ -150,7 +150,7 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
     └── tests/                         evaluation, facility map, parent table, cache, ablation, dataset tests
 ```
 
-**Local only (git-ignored, never pushed):** `data/`, `NEW_natanz/` (benchmark imagery), `external_imagery/` (training imagery, coordinates, review packages), `cnn_benchmark/cache/` (decoded caches), `cnn_benchmark/outputs/ablation/runs*/` (checkpoints), the root workbook, manuscript and VLM result CSVs, `vendor/`, and `_local/` (migration manifests). See `PRIVATE_DATA_NOTES.md`.
+**Local only (git-ignored):** `data/`, `NEW_natanz/` (benchmark imagery), `external_imagery/` (training imagery, coordinates, review packages), `cnn_benchmark/cache/` (decoded caches), `cnn_benchmark/outputs/ablation/runs*/` (checkpoints), the root workbook, manuscript and VLM result CSVs, `vendor/`, and `_local/` (migration manifests).
 
 ### Tests
 
