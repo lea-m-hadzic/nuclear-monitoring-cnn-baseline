@@ -25,7 +25,7 @@ Internal research-results repository.
 - **B**: hard negatives;
 - **C**: mixed nearby and hard negatives. **C is the main reported condition.**
 
-Details: `notes/METHODOLOGY.md`.
+Evaluation rule and caveats: `PAPER_NOTES.md`.
 
 ### Main results
 
@@ -72,13 +72,14 @@ For the single Natanz and Fordow facilities, both methods surface the plant with
 | Full-resolution input (2560 px) | Does the full ≈ 0.74 m/px input help? | Pre-registered, C only, everything else fixed: **materially worse in all 3 seeds** (recall @20% 0.54 → 0.18; area to 50% 18.5 → 39.2%) | **No.** 1280 baseline kept |
 | Saratov auto_mosaic sensitivity | Does the Saratov extraction mode matter? | Re-scored with frozen C checkpoints (no retraining): recall @20% 0.54 → 0.51, area to 50% 18.5 → 18.6%; Spearman 0.95–0.97. Below the pre-set materiality rule | **No** |
 
-Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `results/robustness/` and `results/qa/`.
+Paper-ready text and open label items: `PAPER_NOTES.md`. Tables: `results/robustness/` and `results/qa/`.
 
 ### Repository layout
 
 ```
 .
 ├── README.md                          overview, final setup, main results, VLM comparison, robustness/QA, status
+├── PAPER_NOTES.md                     evaluation rule + caveats, open label items, paper-ready text
 │
 ├── results/                           frozen paper-facing tables (index: results/README.md → generating script)
 │   ├── main/                          abc_summary.csv (headline A/B/C), facility_metrics.csv (per seed),
@@ -99,11 +100,6 @@ Details: `notes/ROBUSTNESS.md` and `notes/DATA_AND_LABEL_QA.md`. Tables: `result
 │   ├── fig_robustness_fullres_2560_recall_vs_review_area.png   C-1280 vs C-2560
 │   ├── fig_saratov_legacy_vs_auto_mosaic.png        Saratov extraction-mode sensitivity
 │   └── fig_vlm_saratov_recall_vs_review_area.png    VLM Saratov facility recall
-│
-├── notes/
-│   ├── METHODOLOGY.md                 baseline definition, data, model, evaluation rule, caveats
-│   ├── ROBUSTNESS.md                  definitive robustness record + paper-ready text
-│   └── DATA_AND_LABEL_QA.md           positive/negative label QA, facility map, extraction audit, artefacts
 │
 ├── provenance/
 │   └── run_records/                   final per-seed run records behind the reported results: config,

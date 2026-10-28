@@ -23,7 +23,7 @@ Per-run inputs (training and evaluation): `external_data/train_ablation.py` and 
 | `fullres_2560/` | **Input resolution:** C retrained at 2560 px (full ≈ 0.74 m/px) vs frozen C-1280, pre-registered; materially worse on all 3 seeds. Spec + freeze, memo, seed-level, summary, 1280-vs-2560 comparison, rank overlap, materiality | `external_data/fullres_2560_compare.py` (runs: `external_data/train_ablation.py --input-px 2560`) |
 | `saratov_auto_mosaic/` | Saratov re-extracted with auto_mosaic and re-scored with the frozen C checkpoints (no retraining): seed-level, summary, rank agreement, legacy-reproduction checks, auto_mosaic scores, report | `external_data/saratov_auto_mosaic_rescore.py` |
 
-Robustness run records: `../provenance/run_records/runs_robustness_{mps,cuda}/` and `../provenance/run_records/fullres_2560/`. Narrative: `../notes/ROBUSTNESS.md`.
+Robustness run records: `../provenance/run_records/runs_robustness_{mps,cuda}/` and `../provenance/run_records/fullres_2560/`.
 
 ## qa/
 
@@ -35,7 +35,7 @@ Robustness run records: `../provenance/run_records/runs_robustness_{mps,cuda}/` 
 | `extraction_audit/` | Re-extraction / preprocessing audit note (13 tiles) | `external_data/extraction_audit.py` |
 | `artifact_audit/` | Watermark and mosaic-seam audit by AOI | `src/artifact_audit.py` |
 
-Narrative: `../notes/DATA_AND_LABEL_QA.md`.
+Label status: `../PAPER_NOTES.md` §2.
 
 ## ../figures/
 

@@ -1,6 +1,6 @@
 # cnn_benchmark: code guide
 
-This folder holds the **code** and the pipeline inputs/intermediates (`outputs/`) for the CNN baseline. For what the baseline is, the final results and the QA record, start at the repository `README.md`. Methods and caveats: `../notes/METHODOLOGY.md`.
+This folder holds the **code** and the pipeline inputs/intermediates (`outputs/`) for the CNN baseline. For what the baseline is, the final results and the QA record, start at the repository `README.md`. Evaluation rule and caveats: `../PAPER_NOTES.md`.
 
 - `src/`: benchmark infrastructure. Parent-tile table, provisional facility map, facility-level evaluator (`evaluation.py`), manuscript regression, image index and decoded cache, generic training plumbing.
 - `external_data/`: external training data, the A/B/C ablation (manifests, training, evaluation, aggregation), robustness tables, QA and review packages, extraction audit and the Saratov auto_mosaic re-scoring. Each script's docstring says what it writes. The result-to-script index is `../results/README.md`.
